@@ -1,4 +1,4 @@
-# 🌍 Syrian Scholars for Peace and Prosperity
+# Syrian Scholars for Peace and Prosperity
 
 ## Who We Are
 We are a coalition of highly qualified Syrian students, doctors, engineers, and professionals admitted to top-tier U.S. institutions, including Harvard, Stanford, and Columbia. The majority of our group has earned full scholarships to pursue critical fields of study.
@@ -14,4 +14,4 @@ Syria is recovering. It no longer constitutes a security threat to anyone and is
 ## Our Mission
 We seek to study in the United States to immerse ourselves in American values of social cohesion, peace, and innovation. Upon completing our studies, our ultimate goal is to return home to lead Syria’s reconstruction and spread these values. 
 
-We aim to build long-term, cross-sector partnerships between Syria and the United States. By exempting Syria from PP10998 and granting visas to qualified individuals, the U.S. can help cultivate a network of professionals dedicated to advancing a peaceful region—a move that profoundly benefits the futures of both our nations.
+We aim to build long-term, cross-sector partnerships between Syria and the United States. By exempting Syria from PP10998 and granting visas to qualified individuals, the U.S. can help cultivate a network of professionals dedicated to advancing a peaceful region, a move that profoundly benefits the futures of both our nations.
