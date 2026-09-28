@@ -26,27 +26,81 @@ const joinConnected = joinId.length > 0;
     </header>
 
     <div class="act-board">
-      <div
-        class="choices act-jobs"
-        role="tablist"
-        aria-label="What to do"
-        data-label-en="What to do"
-        data-label-ar="ماذا تفعل"
-      >
-        <button class="choice" type="button" role="tab" id="tab-write" aria-controls="write" aria-selected="true">
-          <span class="en">Write an official</span>
-          <span class="ar" lang="ar">اكتب إلى مسؤول</span>
-        </button>
-        <button class="choice" type="button" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" tabindex="-1">
-          <span class="en">Contact</span>
-          <span class="ar" lang="ar">راسل</span>
-        </button>
-        <button class="choice" type="button" role="tab" id="tab-join" aria-controls="join" aria-selected="false" tabindex="-1">
-          <span class="en">Join</span>
-          <span class="ar" lang="ar">انضم</span>
-        </button>
-      </div>
+      <aside class="act-side">
+        <div
+          class="choices act-jobs"
+          role="tablist"
+          aria-label="What to do"
+          data-label-en="What to do"
+          data-label-ar="ماذا تفعل"
+        >
+          <button class="choice" type="button" role="tab" id="tab-write" aria-controls="write" aria-selected="true">
+            <span class="en">Write an official</span>
+            <span class="ar" lang="ar">اكتب إلى مسؤول</span>
+          </button>
+          <button class="choice" type="button" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" tabindex="-1">
+            <span class="en">Contact</span>
+            <span class="ar" lang="ar">راسل</span>
+          </button>
+          <button class="choice" type="button" role="tab" id="tab-join" aria-controls="join" aria-selected="false" tabindex="-1">
+            <span class="en">Join</span>
+            <span class="ar" lang="ar">انضم</span>
+          </button>
+        </div>
+        <div class="act-plate" aria-hidden="true">
+          <div class="act-face is-current" data-job="write">
+            <svg class="act-drawing" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect x="7" y="7" width="86" height="86" fill="#edebe0" />
+              <line x1="15" y1="20" x2="85" y2="20" stroke="#6b1f2a" stroke-width="2" vector-effect="non-scaling-stroke" />
+              <line x1="15" y1="34" x2="72" y2="34" stroke="#054239" stroke-width="1.35" vector-effect="non-scaling-stroke" />
+              <line x1="15" y1="46" x2="85" y2="46" stroke="#988561" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <rect x="7" y="56" width="86" height="8" fill="#6b1f2a" />
+              <line x1="15" y1="76" x2="85" y2="76" stroke="#988561" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="15" y1="86" x2="48" y2="86" stroke="#054239" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            </svg>
+            <svg class="trace" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="trace-base" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+              <rect class="trace-run" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+            </svg>
+          </div>
+          <div class="act-face" data-job="contact">
+            <svg class="act-drawing" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect x="0" y="0" width="100" height="58" fill="#edebe0" />
+              <line x1="12" y1="16" x2="72" y2="16" stroke="#054239" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              <line x1="12" y1="30" x2="88" y2="30" stroke="#988561" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="12" y1="44" x2="56" y2="44" stroke="#054239" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              <rect x="0" y="58" width="100" height="42" fill="#002623" />
+              <line x1="0" y1="58" x2="100" y2="58" stroke="#b9a779" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="12" y1="74" x2="72" y2="74" stroke="#b9a779" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="12" y1="86" x2="46" y2="86" stroke="#edebe0" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            </svg>
+            <svg class="trace" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="trace-base" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+              <rect class="trace-run" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+            </svg>
+          </div>
+          <div class="act-face" data-job="join">
+            <svg class="act-drawing" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect x="0" y="0" width="50" height="100" fill="#054239" />
+              <rect x="50" y="0" width="50" height="100" fill="#edebe0" />
+              <line x1="50" y1="0" x2="50" y2="100" stroke="#b9a779" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="10" y1="24" x2="40" y2="24" stroke="#b9a779" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="10" y1="38" x2="32" y2="38" stroke="#edebe0" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              <line x1="16" y1="54" x2="84" y2="54" stroke="#b9a779" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              <line x1="10" y1="74" x2="40" y2="74" stroke="#b9a779" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="60" y1="24" x2="90" y2="24" stroke="#054239" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              <line x1="60" y1="38" x2="82" y2="38" stroke="#988561" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+              <line x1="60" y1="74" x2="90" y2="74" stroke="#054239" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            </svg>
+            <svg class="trace" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="trace-base" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+              <rect class="trace-run" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+            </svg>
+          </div>
+        </div>
+      </aside>
 
+      <div class="act-stage">
     <section id="write" class="act-pane act-write" role="tabpanel" aria-labelledby="tab-write">
       <h2>
         <span class="en">Write an official</span>
@@ -224,6 +278,7 @@ const joinConnected = joinId.length > 0;
         <p class="form-status" data-status aria-live="polite"></p>
       </form>
     </section>
+      </div>
     </div>
   </main>
   <script is:inline data-astro-rerun define:vars={{ letters, formspreeIds }}>
@@ -243,10 +298,40 @@ const joinConnected = joinId.length > 0;
         });
       }
       var jobs = ["write", "contact", "join"];
+      var jobName = "write";
       var writer = "supporter";
       var recipient = "us";
       var letter = document.getElementById("letter");
       var copyStatus = document.getElementById("copy-status");
+
+      function placeFaces(name, instant) {
+        var plate = document.querySelector(".act-plate");
+        if (!plate) return;
+        var index = jobs.indexOf(name);
+        if (index < 0) index = 0;
+        var rtl = document.documentElement.dir === "rtl";
+        plate.classList.toggle("is-instant", !!instant);
+        plate.querySelectorAll(".act-face").forEach(function (face) {
+          var slot = jobs.indexOf(face.getAttribute("data-job") || "");
+          var delta = slot - index;
+          if (rtl) delta = -delta;
+          var on = slot === index;
+          face.style.transform = "translate3d(" + delta * 100 + "%, 0, 0)";
+          if (!on) {
+            face.classList.remove("is-current");
+            return;
+          }
+          if (!instant) {
+            face.classList.remove("is-current");
+            void face.offsetWidth;
+          }
+          face.classList.add("is-current");
+        });
+        if (instant) {
+          void plate.offsetWidth;
+          plate.classList.remove("is-instant");
+        }
+      }
 
       function jobFromHash() {
         var hash = location.hash.replace("#", "");
@@ -255,7 +340,12 @@ const joinConnected = joinId.length > 0;
 
       function showJob(name) {
         var board = document.querySelector(".act-board");
+        var first = !board || !board.classList.contains("act-ready");
         if (board) board.classList.add("act-ready");
+        if (jobs.indexOf(name) < 0) name = "write";
+        var changed = name !== jobName;
+        jobName = name;
+        placeFaces(name, first || !changed);
         jobs.forEach(function (job) {
           var panel = document.getElementById(job);
           var tab = document.getElementById("tab-" + job);
@@ -281,6 +371,11 @@ const joinConnected = joinId.length > 0;
         if (!action) return;
         var extra = action.getBoundingClientRect().bottom - (window.innerHeight - 16);
         if (extra <= 0) return;
+        var stacked = window.matchMedia("(max-width: 860px)").matches;
+        if (!stacked) {
+          window.scrollBy(0, extra);
+          return;
+        }
         var maxLift = list.getBoundingClientRect().top - 12;
         var lift = Math.min(extra, Math.max(0, maxLift));
         if (lift > 0) window.scrollBy(0, lift);
@@ -519,6 +614,7 @@ const joinConnected = joinId.length > 0;
         });
         renderLetter();
         paintStatus();
+        placeFaces(jobName, true);
       }
 
       var ids = formspreeIds || {};
