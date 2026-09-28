@@ -1031,6 +1031,14 @@ html[dir="rtl"] .letter {
   color: var(--ink);
 }
 
+.form-status[data-tone="ok"] {
+  color: var(--forest);
+}
+
+.form-status[data-tone="error"] {
+  color: var(--umber-bright);
+}
+
 .form-links {
   display: flex;
   flex-wrap: wrap;

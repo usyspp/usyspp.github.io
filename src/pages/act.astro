@@ -1,9 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { formspreeId } from "../data/site";
+import { formspreeIds } from "../data/site";
 import { letters } from "../data/letters";
 
-const connected = formspreeId.trim().length > 0;
+const contactId = formspreeIds.contact.trim();
+const joinId = formspreeIds.join.trim();
+const contactConnected = contactId.length > 0;
+const joinConnected = joinId.length > 0;
 ---
 
 <Base
@@ -77,10 +80,10 @@ const connected = formspreeId.trim().length > 0;
         <span class="en">Contact</span>
         <span class="ar" lang="ar">راسل</span>
       </h2>
-      <form class="sheet-form" data-kind="contact" novalidate={connected ? undefined : true}>
+      <form class="sheet-form" data-kind="contact" novalidate={contactConnected ? undefined : true}>
         <input type="hidden" name="form" value="contact" />
         {
-          !connected && (
+          !contactConnected && (
             <p class="form-note">
               <span class="en">Sending is not connected yet. Nothing you type here is sent.</span>
               <span class="ar" lang="ar">
@@ -143,10 +146,10 @@ const connected = formspreeId.trim().length > 0;
         <span class="en">Join</span>
         <span class="ar" lang="ar">انضم</span>
       </h2>
-      <form class="sheet-form" data-kind="join" novalidate={connected ? undefined : true}>
+      <form class="sheet-form" data-kind="join" novalidate={joinConnected ? undefined : true}>
         <input type="hidden" name="form" value="join" />
         {
-          !connected && (
+          !joinConnected && (
             <p class="form-note">
               <span class="en">Sending is not connected yet. Nothing you type here is sent.</span>
               <span class="ar" lang="ar">
@@ -194,7 +197,7 @@ const connected = formspreeId.trim().length > 0;
     </section>
     </div>
   </main>
-  <script is:inline data-astro-rerun define:vars={{ letters, formspreeId }}>
+  <script is:inline data-astro-rerun define:vars={{ letters, formspreeIds }}>
     (function () {
       if (window.__sspActStop) window.__sspActStop();
       var actObservers = [];
@@ -223,16 +226,19 @@ const connected = formspreeId.trim().length > 0;
         return lang() === "ar" ? ar : en;
       }
 
-      function say(node, en, ar) {
+      function say(node, en, ar, tone) {
         if (!node) return;
         if (!en) {
           node.removeAttribute("data-en");
           node.removeAttribute("data-ar");
+          node.removeAttribute("data-tone");
           node.textContent = "";
           return;
         }
         node.setAttribute("data-en", en);
         node.setAttribute("data-ar", ar);
+        if (tone) node.setAttribute("data-tone", tone);
+        else node.removeAttribute("data-tone");
         node.textContent = text(en, ar);
       }
 
@@ -322,11 +328,18 @@ const connected = formspreeId.trim().length > 0;
         paintStatus();
       }
 
-      var id = (formspreeId || "").trim();
+      var ids = formspreeIds || {};
       document.querySelectorAll(".sheet-form").forEach(function (form) {
+        var status = form.querySelector("[data-status]");
+        form.addEventListener("input", function (event) {
+          if (!event.isTrusted) return;
+          if (form.getAttribute("data-sending") === "true") return;
+          say(status, "", "");
+        });
         form.addEventListener("submit", function (event) {
           event.preventDefault();
-          var status = form.querySelector("[data-status]");
+          var kind = form.getAttribute("data-kind") || "";
+          var id = String(ids[kind] || "").trim();
           var button = form.querySelector("button[type='submit']");
           if (!id) {
             say(
@@ -336,11 +349,13 @@ const connected = formspreeId.trim().length > 0;
             );
             return;
           }
+          syncSelects();
           if (!form.checkValidity()) {
             form.reportValidity();
             return;
           }
           say(status, "Sending.", "جارٍ الإرسال.");
+          form.setAttribute("data-sending", "true");
           if (button) button.disabled = true;
           fetch("https://formspree.io/f/" + id, {
             method: "POST",
@@ -349,7 +364,7 @@ const connected = formspreeId.trim().length > 0;
           })
             .then(function (response) {
               if (!response.ok) throw new Error("status");
-              say(status, "Your message was received.", "وصلت رسالتك.");
+              say(status, "Your message was received.", "وصلت رسالتك.", "ok");
               form.reset();
               syncSelects();
             })
@@ -358,9 +373,11 @@ const connected = formspreeId.trim().length > 0;
                 status,
                 "Sending failed. Nothing was confirmed. Try again.",
                 "تعذر الإرسال. لم يُؤكَّد شيء. أعد المحاولة.",
+                "error",
               );
             })
             .then(function () {
+              form.removeAttribute("data-sending");
               if (button) button.disabled = false;
             });
         });

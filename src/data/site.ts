@@ -1,2 +1,5 @@
-/** Public Formspree form id. Leave this empty until a form exists. */
-export const formspreeId = "";
+/** Public Formspree form ids. Leave an id empty until that form exists. */
+export const formspreeIds = {
+  contact: "xzezyrdz",
+  join: "xkjgkroz",
+};
