@@ -1,36 +1,338 @@
 ---
 import Base from "../layouts/Base.astro";
+import { formspreeId } from "../data/site";
+import { letters } from "../data/letters";
+
+const connected = formspreeId.trim().length > 0;
 ---
 
 <Base
-  descriptionEn="Write officials, contact the coalition, or join Syrian Scholars for Peace and Prosperity."
-  descriptionAr="اكتب إلى المسؤولين، أو راسل الائتلاف، أو انضم إلى الباحثين السوريين من أجل السلام والازدهار."
+  descriptionEn="Copy a letter to a U.S. official or a Syrian government recipient, or contact and join Syrian Scholars for Peace and Prosperity."
+  descriptionAr="انسخ رسالة إلى مسؤول أمريكي أو إلى جهة في الحكومة السورية، أو راسل الباحثين السوريين من أجل السلام والازدهار وانضم إليهم."
 >
-  <main id="case" class="sheet-note">
-    <h1>
-      <span class="en">Act</span>
-      <span class="ar" lang="ar">بادر</span>
-    </h1>
-    <p class="prose" id="write">
-      <span class="en">
-        Letters to U.S. officials and to Syrian government recipients, for a supporter and for an affected
-        person, in English and in Arabic.
-      </span>
-      <span class="ar" lang="ar">
-        رسائل إلى مسؤولين أمريكيين وإلى جهات في الحكومة السورية، للداعم وللشخص المتأثر، بالإنجليزية وبالعربية.
-      </span>
-    </p>
-    <p class="prose" id="contact">
-      <span class="en">Contact is a name, an email, a role, and a message.</span>
-      <span class="ar" lang="ar">المراسلة اسم وبريد إلكتروني وصفة ورسالة.</span>
-    </p>
-    <p class="prose" id="join">
-      <span class="en">Joining is a name, an email, a country, and how you can help.</span>
-      <span class="ar" lang="ar">الانضمام اسم وبريد إلكتروني وبلد وكيف يمكنك المساعدة.</span>
-    </p>
-    <a class="return" href="/">
-      <span class="en">Return to the case</span>
-      <span class="ar" lang="ar">العودة إلى القضية</span>
-    </a>
+  <main id="case" class="cases-page">
+    <header class="cases-intro">
+      <h1>
+        <span class="en">Act</span>
+        <span class="ar" lang="ar">بادر</span>
+      </h1>
+      <p class="prose">
+        <span class="en">Copy a letter, or write to the coalition.</span>
+        <span class="ar" lang="ar">انسخ رسالة، أو اكتب إلى الائتلاف.</span>
+      </p>
+    </header>
+
+    <section id="write" class="case-sheet act-sheet">
+      <h2>
+        <span class="en">Write an official</span>
+        <span class="ar" lang="ar">اكتب إلى مسؤول</span>
+      </h2>
+      <p class="prose">
+        <span class="en">Choose who is writing, and who receives the letter. Then copy it.</span>
+        <span class="ar" lang="ar">اختر من يكتب، ومن يتلقى الرسالة. ثم انسخها.</span>
+      </p>
+      <div
+        class="choices"
+        role="group"
+        aria-label="Who is writing"
+        data-label-en="Who is writing"
+        data-label-ar="من يكتب"
+      >
+        <button class="choice" type="button" data-writer="supporter" aria-pressed="true">
+          <span class="en">Supporter</span>
+          <span class="ar" lang="ar">داعم</span>
+        </button>
+        <button class="choice" type="button" data-writer="affected" aria-pressed="false">
+          <span class="en">Affected person</span>
+          <span class="ar" lang="ar">شخص متأثر</span>
+        </button>
+      </div>
+      <div
+        class="choices"
+        role="group"
+        aria-label="Who receives it"
+        data-label-en="Who receives it"
+        data-label-ar="من يتلقاها"
+      >
+        <button class="choice" type="button" data-recipient="us" aria-pressed="true">
+          <span class="en">U.S. official</span>
+          <span class="ar" lang="ar">مسؤول أمريكي</span>
+        </button>
+        <button class="choice" type="button" data-recipient="sy" aria-pressed="false">
+          <span class="en">Syrian government</span>
+          <span class="ar" lang="ar">الحكومة السورية</span>
+        </button>
+      </div>
+      <div class="letter" id="letter" tabindex="0">{letters["supporter-us"].en}</div>
+      <button class="action" type="button" id="copy-letter">
+        <span class="en">Copy the letter</span>
+        <span class="ar" lang="ar">انسخ الرسالة</span>
+      </button>
+      <p class="form-status" id="copy-status" aria-live="polite"></p>
+    </section>
+
+    <section id="contact" class="case-sheet act-sheet">
+      <h2>
+        <span class="en">Contact</span>
+        <span class="ar" lang="ar">راسل</span>
+      </h2>
+      <form class="sheet-form" data-kind="contact" novalidate={connected ? undefined : true}>
+        <input type="hidden" name="form" value="contact" />
+        {
+          !connected && (
+            <p class="form-note">
+              <span class="en">Sending is not connected yet. Nothing you type here is sent.</span>
+              <span class="ar" lang="ar">
+                الإرسال غير موصول بعد. لن يُرسل ما كتبته.
+              </span>
+            </p>
+          )
+        }
+        <label class="field">
+          <span class="en">Name</span>
+          <span class="ar" lang="ar">الاسم</span>
+          <input name="name" type="text" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span class="en">Email</span>
+          <span class="ar" lang="ar">البريد الإلكتروني</span>
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label class="field">
+          <span class="en">Role</span>
+          <span class="ar" lang="ar">الصفة</span>
+          <select class="en" name="role" required>
+            <option value="supporter">Supporter</option>
+            <option value="affected">Affected student or professional</option>
+            <option value="press">Press</option>
+            <option value="other">Other</option>
+          </select>
+          <select class="ar" name="role" lang="ar" required>
+            <option value="supporter">داعم</option>
+            <option value="affected">طالب أو مهني متأثر</option>
+            <option value="press">صحافة</option>
+            <option value="other">غير ذلك</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="en">Message</span>
+          <span class="ar" lang="ar">الرسالة</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <p class="form-links">
+          <a href="/privacy">
+            <span class="en">Privacy</span>
+            <span class="ar" lang="ar">الخصوصية</span>
+          </a>
+          <a href="/terms">
+            <span class="en">Terms</span>
+            <span class="ar" lang="ar">الشروط</span>
+          </a>
+        </p>
+        <button class="action" type="submit">
+          <span class="en">Send</span>
+          <span class="ar" lang="ar">أرسل</span>
+        </button>
+        <p class="form-status" data-status aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="join" class="case-sheet act-sheet">
+      <h2>
+        <span class="en">Join</span>
+        <span class="ar" lang="ar">انضم</span>
+      </h2>
+      <form class="sheet-form" data-kind="join" novalidate={connected ? undefined : true}>
+        <input type="hidden" name="form" value="join" />
+        {
+          !connected && (
+            <p class="form-note">
+              <span class="en">Sending is not connected yet. Nothing you type here is sent.</span>
+              <span class="ar" lang="ar">
+                الإرسال غير موصول بعد. لن يُرسل ما كتبته.
+              </span>
+            </p>
+          )
+        }
+        <label class="field">
+          <span class="en">Name</span>
+          <span class="ar" lang="ar">الاسم</span>
+          <input name="name" type="text" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span class="en">Email</span>
+          <span class="ar" lang="ar">البريد الإلكتروني</span>
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label class="field">
+          <span class="en">Country</span>
+          <span class="ar" lang="ar">البلد</span>
+          <input name="country" type="text" autocomplete="country-name" required />
+        </label>
+        <label class="field">
+          <span class="en">How you can help</span>
+          <span class="ar" lang="ar">كيف يمكنك المساعدة</span>
+          <textarea name="help" rows="5" required></textarea>
+        </label>
+        <p class="form-links">
+          <a href="/privacy">
+            <span class="en">Privacy</span>
+            <span class="ar" lang="ar">الخصوصية</span>
+          </a>
+          <a href="/terms">
+            <span class="en">Terms</span>
+            <span class="ar" lang="ar">الشروط</span>
+          </a>
+        </p>
+        <button class="action" type="submit">
+          <span class="en">Send</span>
+          <span class="ar" lang="ar">أرسل</span>
+        </button>
+        <p class="form-status" data-status aria-live="polite"></p>
+      </form>
+    </section>
   </main>
+  <script is:inline define:vars={{ letters, formspreeId }}>
+    (function () {
+      var writer = "supporter";
+      var recipient = "us";
+      var letter = document.getElementById("letter");
+      var copyStatus = document.getElementById("copy-status");
+
+      function lang() {
+        return document.documentElement.lang === "ar" ? "ar" : "en";
+      }
+
+      function text(en, ar) {
+        return lang() === "ar" ? ar : en;
+      }
+
+      function renderLetter() {
+        if (!letter) return;
+        var key = writer + "-" + recipient;
+        var pair = letters[key];
+        letter.textContent = pair ? pair[lang()] : "";
+        document.querySelectorAll("[data-writer]").forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-writer") === writer ? "true" : "false");
+        });
+        document.querySelectorAll("[data-recipient]").forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-recipient") === recipient ? "true" : "false");
+        });
+      }
+
+      document.querySelectorAll("[data-writer]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          writer = button.getAttribute("data-writer") || writer;
+          if (copyStatus) copyStatus.textContent = "";
+          renderLetter();
+        });
+      });
+      document.querySelectorAll("[data-recipient]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          recipient = button.getAttribute("data-recipient") || recipient;
+          if (copyStatus) copyStatus.textContent = "";
+          renderLetter();
+        });
+      });
+
+      var copy = document.getElementById("copy-letter");
+      if (copy) {
+        copy.addEventListener("click", function () {
+          var value = letter ? letter.textContent || "" : "";
+          function done(ok) {
+            if (!copyStatus) return;
+            copyStatus.textContent = ok
+              ? text("The letter is copied.", "نُسخت الرسالة.")
+              : text("Copy failed. Select the letter and copy it.", "تعذر النسخ. حدّد الرسالة وانسخها.");
+          }
+          function selectLetter() {
+            if (!letter) return;
+            var range = document.createRange();
+            range.selectNodeContents(letter);
+            var selection = window.getSelection();
+            if (!selection) return;
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(
+              function () { done(true); },
+              function () {
+                selectLetter();
+                done(false);
+              },
+            );
+          } else {
+            selectLetter();
+            done(false);
+          }
+        });
+      }
+
+      function syncSelects() {
+        var arabic = lang() === "ar";
+        document.querySelectorAll("select.en").forEach(function (select) {
+          select.disabled = arabic;
+          select.required = !arabic;
+        });
+        document.querySelectorAll("select.ar").forEach(function (select) {
+          select.disabled = !arabic;
+          select.required = arabic;
+        });
+        renderLetter();
+      }
+
+      var id = (formspreeId || "").trim();
+      document.querySelectorAll(".sheet-form").forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var status = form.querySelector("[data-status]");
+          var button = form.querySelector("button[type='submit']");
+          if (!id) {
+            if (status) {
+              status.textContent = text(
+                "Sending is not connected yet. Nothing you type here is sent.",
+                "الإرسال غير موصول بعد. لن يُرسل ما كتبته.",
+              );
+            }
+            return;
+          }
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          if (status) status.textContent = text("Sending.", "جارٍ الإرسال.");
+          if (button) button.disabled = true;
+          fetch("https://formspree.io/f/" + id, {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: new FormData(form),
+          })
+            .then(function (response) {
+              if (!response.ok) throw new Error("status");
+              if (status) status.textContent = text("Your message was received.", "وصلت رسالتك.");
+              form.reset();
+              syncSelects();
+            })
+            .catch(function () {
+              if (status) {
+                status.textContent = text(
+                  "Sending failed. Nothing was confirmed. Try again.",
+                  "تعذر الإرسال. لم يُؤكَّد شيء. أعد المحاولة.",
+                );
+              }
+            })
+            .then(function () {
+              if (button) button.disabled = false;
+            });
+        });
+      });
+
+      new MutationObserver(syncSelects).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["lang"],
+      });
+      syncSelects();
+    })();
+  </script>
 </Base>
