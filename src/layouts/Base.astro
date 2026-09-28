@@ -19,7 +19,7 @@ const links = [
 ---
 
 <!doctype html>
-<html lang="en" dir="ltr" transition:animate="none">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -218,12 +218,47 @@ const links = [
           });
         });
 
+        var sheetOrder = ["/", "/updates", "/cases", "/act"];
+
+        function sheetIndex(url) {
+          var path = url.pathname.replace(/\/$/, "") || "/";
+          return sheetOrder.indexOf(path);
+        }
+
+        function fontsReady() {
+          if (!document.fonts || !document.fonts.ready) return Promise.resolve();
+          var next = document.documentElement.lang === "ar" ? "ar" : "en";
+          return warm(next).then(function () {
+            return document.fonts.ready;
+          });
+        }
+
+        document.addEventListener("astro:before-preparation", function (event) {
+          var from = sheetIndex(event.from);
+          var to = sheetIndex(event.to);
+          var rtl = document.documentElement.dir === "rtl";
+          var travel = "rise";
+          if (from >= 0 && to >= 0 && from !== to) {
+            var towardEnd = to > from;
+            if (rtl) towardEnd = !towardEnd;
+            travel = towardEnd ? "forward" : "back";
+          }
+          document.documentElement.setAttribute("data-travel", travel);
+          var original = event.loader;
+          event.loader = async function () {
+            await original();
+            await fontsReady();
+          };
+        });
+
         document.addEventListener("astro:before-swap", function (event) {
           var next = document.documentElement.lang === "ar" ? "ar" : "en";
           var doc = event.newDocument;
           if (!doc || !doc.documentElement) return;
           doc.documentElement.lang = next;
           doc.documentElement.dir = next === "ar" ? "rtl" : "ltr";
+          var travel = document.documentElement.getAttribute("data-travel");
+          if (travel) doc.documentElement.setAttribute("data-travel", travel);
           var title = doc.getElementById("doc-title");
           if (title) title.textContent = title.getAttribute("data-" + next) || title.textContent;
           var desc = doc.getElementById("doc-desc");

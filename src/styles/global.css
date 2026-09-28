@@ -781,6 +781,28 @@ html[dir="rtl"] .case-line {
   color: var(--wheat);
 }
 
+.cases-page:not(.act-page) .cases-intro::after {
+  content: "";
+  display: block;
+  width: min(18rem, 78%);
+  height: 1px;
+  margin-top: 1.15rem;
+  background: var(--wheat);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  animation: rule-draw 0.7s var(--ease) 0.08s both;
+}
+
+html[dir="rtl"] .cases-page:not(.act-page) .cases-intro::after {
+  transform-origin: 100% 50%;
+}
+
+@keyframes rule-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .case-sheet {
   scroll-margin-top: 1.25rem;
   padding: clamp(2.75rem, 6vw, 4.5rem) max(1.25rem, env(safe-area-inset-left), env(safe-area-inset-right));
@@ -1469,34 +1491,91 @@ html[dir="rtl"] .form-field textarea {
   }
 }
 
-@keyframes sheet-out {
+@keyframes travel-out-forward {
   to {
-    opacity: 0;
+    transform: translate3d(-26vw, 0, 0);
   }
 }
 
-@keyframes sheet-in {
+@keyframes travel-in-forward {
   from {
-    opacity: 0;
+    transform: translate3d(26vw, 0, 0);
   }
+}
+
+@keyframes travel-out-back {
+  to {
+    transform: translate3d(26vw, 0, 0);
+  }
+}
+
+@keyframes travel-in-back {
+  from {
+    transform: translate3d(-26vw, 0, 0);
+  }
+}
+
+@keyframes travel-out-rise {
+  to {
+    transform: translate3d(0, -5vh, 0);
+  }
+}
+
+@keyframes travel-in-rise {
+  from {
+    transform: translate3d(0, 5vh, 0);
+  }
+}
+
+::view-transition-group(root) {
+  animation: none;
 }
 
 ::view-transition-old(root) {
-  opacity: 1;
+  z-index: 1;
   mix-blend-mode: normal;
-  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both sheet-out;
+  animation: 200ms cubic-bezier(0.4, 0, 1, 1) both travel-out-rise;
 }
 
 ::view-transition-new(root) {
-  opacity: 1;
+  z-index: 2;
   mix-blend-mode: normal;
-  animation: 140ms cubic-bezier(0.16, 1, 0.3, 1) both sheet-in;
+  animation: 280ms var(--ease) both travel-in-rise;
+}
+
+html[data-travel="forward"]::view-transition-old(root) {
+  animation-name: travel-out-forward;
+}
+
+html[data-travel="forward"]::view-transition-new(root) {
+  animation-name: travel-in-forward;
+}
+
+html[data-travel="back"]::view-transition-old(root) {
+  animation-name: travel-out-back;
+}
+
+html[data-travel="back"]::view-transition-new(root) {
+  animation-name: travel-in-back;
+}
+
+::view-transition-old(titleblock),
+::view-transition-new(titleblock),
+::view-transition-old(colophon),
+::view-transition-new(colophon) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;
+  }
+
+  .cases-page:not(.act-page) .cases-intro::after {
+    animation: none;
+    transform: none;
   }
 
   .trace-run,
