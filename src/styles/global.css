@@ -919,6 +919,26 @@ html[dir="rtl"] .field textarea {
   max-width: 36ch;
 }
 
+.colophon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  max-width: none;
+}
+
+.colophon-links a {
+  color: var(--wheat-deep);
+  font-weight: 600;
+}
+
+.colophon-links a:hover {
+  color: var(--wheat);
+}
+
+.notice .prose + .prose {
+  margin-top: 1.15rem;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
