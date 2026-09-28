@@ -26,7 +26,28 @@ const joinConnected = joinId.length > 0;
     </header>
 
     <div class="act-board">
-    <section id="write" class="case-sheet act-sheet act-pane act-write">
+      <div
+        class="choices act-jobs"
+        role="tablist"
+        aria-label="What to do"
+        data-label-en="What to do"
+        data-label-ar="ماذا تفعل"
+      >
+        <button class="choice" type="button" role="tab" id="tab-write" aria-controls="write" aria-selected="true">
+          <span class="en">Write an official</span>
+          <span class="ar" lang="ar">اكتب إلى مسؤول</span>
+        </button>
+        <button class="choice" type="button" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" tabindex="-1">
+          <span class="en">Contact</span>
+          <span class="ar" lang="ar">راسل</span>
+        </button>
+        <button class="choice" type="button" role="tab" id="tab-join" aria-controls="join" aria-selected="false" tabindex="-1">
+          <span class="en">Join</span>
+          <span class="ar" lang="ar">انضم</span>
+        </button>
+      </div>
+
+    <section id="write" class="act-pane act-write" role="tabpanel" aria-labelledby="tab-write">
       <h2>
         <span class="en">Write an official</span>
         <span class="ar" lang="ar">اكتب إلى مسؤول</span>
@@ -75,12 +96,12 @@ const joinConnected = joinId.length > 0;
       <p class="form-status" id="copy-status" aria-live="polite"></p>
     </section>
 
-    <section id="contact" class="case-sheet act-sheet act-pane">
+    <section id="contact" class="act-pane" role="tabpanel" aria-labelledby="tab-contact" hidden>
       <h2>
         <span class="en">Contact</span>
         <span class="ar" lang="ar">راسل</span>
       </h2>
-      <form class="sheet-form" data-kind="contact" novalidate={contactConnected ? undefined : true}>
+      <form class="sheet-form" data-kind="contact" novalidate>
         <input type="hidden" name="form" value="contact" />
         {
           !contactConnected && (
@@ -95,33 +116,37 @@ const joinConnected = joinId.length > 0;
         <label class="form-field">
           <span class="en">Name</span>
           <span class="ar" lang="ar">الاسم</span>
-          <input name="name" type="text" autocomplete="name" required />
+          <input name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error" />
+          <p class="field-error" id="contact-name-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">Email</span>
           <span class="ar" lang="ar">البريد الإلكتروني</span>
-          <input name="email" type="email" autocomplete="email" required />
+          <input name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error" />
+          <p class="field-error" id="contact-email-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">Role</span>
           <span class="ar" lang="ar">الصفة</span>
-          <select class="en" name="role" required>
+          <select class="en" name="role" required aria-describedby="contact-role-error">
             <option value="supporter">Supporter</option>
             <option value="affected">Affected student or professional</option>
             <option value="press">Press</option>
             <option value="other">Other</option>
           </select>
-          <select class="ar" name="role" lang="ar" required>
+          <select class="ar" name="role" lang="ar" required aria-describedby="contact-role-error">
             <option value="supporter">داعم</option>
             <option value="affected">طالب أو مهني متأثر</option>
             <option value="press">صحافة</option>
             <option value="other">غير ذلك</option>
           </select>
+          <p class="field-error" id="contact-role-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">Message</span>
           <span class="ar" lang="ar">الرسالة</span>
-          <textarea name="message" rows="5" required></textarea>
+          <textarea name="message" rows="5" required aria-describedby="contact-message-error"></textarea>
+          <p class="field-error" id="contact-message-error" hidden></p>
         </label>
         <p class="form-links">
           <a href="/privacy">
@@ -141,12 +166,12 @@ const joinConnected = joinId.length > 0;
       </form>
     </section>
 
-    <section id="join" class="case-sheet act-sheet act-pane">
+    <section id="join" class="act-pane" role="tabpanel" aria-labelledby="tab-join" hidden>
       <h2>
         <span class="en">Join</span>
         <span class="ar" lang="ar">انضم</span>
       </h2>
-      <form class="sheet-form" data-kind="join" novalidate={joinConnected ? undefined : true}>
+      <form class="sheet-form" data-kind="join" novalidate>
         <input type="hidden" name="form" value="join" />
         {
           !joinConnected && (
@@ -161,22 +186,26 @@ const joinConnected = joinId.length > 0;
         <label class="form-field">
           <span class="en">Name</span>
           <span class="ar" lang="ar">الاسم</span>
-          <input name="name" type="text" autocomplete="name" required />
+          <input name="name" type="text" autocomplete="name" required aria-describedby="join-name-error" />
+          <p class="field-error" id="join-name-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">Email</span>
           <span class="ar" lang="ar">البريد الإلكتروني</span>
-          <input name="email" type="email" autocomplete="email" required />
+          <input name="email" type="email" autocomplete="email" required aria-describedby="join-email-error" />
+          <p class="field-error" id="join-email-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">Country</span>
           <span class="ar" lang="ar">البلد</span>
-          <input name="country" type="text" autocomplete="country-name" required />
+          <input name="country" type="text" autocomplete="country-name" required aria-describedby="join-country-error" />
+          <p class="field-error" id="join-country-error" hidden></p>
         </label>
         <label class="form-field">
           <span class="en">How you can help</span>
           <span class="ar" lang="ar">كيف يمكنك المساعدة</span>
-          <textarea name="help" rows="5" required></textarea>
+          <textarea name="help" rows="5" required aria-describedby="join-help-error"></textarea>
+          <p class="field-error" id="join-help-error" hidden></p>
         </label>
         <p class="form-links">
           <a href="/privacy">
@@ -213,10 +242,123 @@ const joinConnected = joinId.length > 0;
           if (window.__sspActStop) window.__sspActStop();
         });
       }
+      var jobs = ["write", "contact", "join"];
       var writer = "supporter";
       var recipient = "us";
       var letter = document.getElementById("letter");
       var copyStatus = document.getElementById("copy-status");
+
+      function jobFromHash() {
+        var hash = location.hash.replace("#", "");
+        return jobs.indexOf(hash) >= 0 ? hash : "write";
+      }
+
+      function showJob(name) {
+        var board = document.querySelector(".act-board");
+        if (board) board.classList.add("act-ready");
+        jobs.forEach(function (job) {
+          var panel = document.getElementById(job);
+          var tab = document.getElementById("tab-" + job);
+          var on = job === name;
+          if (panel) {
+            if (on) panel.removeAttribute("hidden");
+            else panel.setAttribute("hidden", "");
+          }
+          if (tab) {
+            tab.setAttribute("aria-selected", on ? "true" : "false");
+            tab.tabIndex = on ? 0 : -1;
+          }
+        });
+      }
+
+      function revealJob() {
+        var list = document.querySelector(".act-jobs");
+        var panel = document.querySelector(".act-pane:not([hidden])");
+        if (!list || !panel) return;
+        window.scrollTo(0, 0);
+        if (panel.id === "write") return;
+        var action = panel.querySelector(".action");
+        if (!action) return;
+        var extra = action.getBoundingClientRect().bottom - (window.innerHeight - 16);
+        if (extra <= 0) return;
+        var maxLift = list.getBoundingClientRect().top - 12;
+        var lift = Math.min(extra, Math.max(0, maxLift));
+        if (lift > 0) window.scrollBy(0, lift);
+      }
+
+      function openJob(name, updateHash) {
+        if (jobs.indexOf(name) < 0) name = "write";
+        showJob(name);
+        if (updateHash && location.hash !== "#" + name) {
+          var next = location.pathname + location.search + "#" + name;
+          history.replaceState(history.state, "", next);
+        }
+        revealJob();
+      }
+
+      document.querySelectorAll(".act-jobs [role='tab']").forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          openJob(tab.getAttribute("aria-controls") || "write", true);
+        });
+      });
+
+      var jobList = document.querySelector(".act-jobs");
+      if (jobList) {
+        jobList.addEventListener("keydown", function (event) {
+          var tabs = Array.prototype.slice.call(jobList.querySelectorAll("[role='tab']"));
+          var index = tabs.indexOf(document.activeElement);
+          if (index < 0) return;
+          var step = document.documentElement.dir === "rtl" ? -1 : 1;
+          var next = index;
+          if (event.key === "ArrowRight") next = index + step;
+          else if (event.key === "ArrowLeft") next = index - step;
+          else if (event.key === "Home") next = 0;
+          else if (event.key === "End") next = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          next = (next + tabs.length) % tabs.length;
+          tabs[next].focus();
+          tabs[next].click();
+        });
+      }
+
+      if (!window.__sspActHash) {
+        window.__sspActHash = true;
+        window.addEventListener("hashchange", function () {
+          if (!document.getElementById("tab-write")) return;
+          showJob(jobFromHash());
+          setTimeout(revealJob, 0);
+        });
+        window.addEventListener("load", function () {
+          setTimeout(revealJob, 0);
+        });
+        document.addEventListener(
+          "click",
+          function (event) {
+            var target = event.target;
+            if (!(target instanceof Element)) return;
+            var link = target.closest("a");
+            if (!link || !link.href) return;
+            var here = location.pathname.replace(/\/$/, "") || "/";
+            if (here !== "/act") return;
+            var url;
+            try {
+              url = new URL(link.href, location.href);
+            } catch (e) {
+              return;
+            }
+            var path = url.pathname.replace(/\/$/, "") || "/";
+            var hash = url.hash.replace("#", "");
+            if (url.origin !== location.origin || path !== "/act" || jobs.indexOf(hash) < 0) return;
+            event.preventDefault();
+            event.stopPropagation();
+            openJob(hash, true);
+          },
+          true,
+        );
+      }
+
+      openJob(jobFromHash(), false);
 
       function lang() {
         return document.documentElement.lang === "ar" ? "ar" : "en";
@@ -243,11 +385,62 @@ const joinConnected = joinId.length > 0;
       }
 
       function paintStatus() {
-        document.querySelectorAll("#copy-status, [data-status]").forEach(function (node) {
+        document.querySelectorAll("#copy-status, [data-status], .field-error").forEach(function (node) {
           var en = node.getAttribute("data-en");
           var ar = node.getAttribute("data-ar");
           if (en) node.textContent = text(en, ar || en);
         });
+      }
+
+      function markError(error, control, en, ar) {
+        if (error) {
+          error.hidden = false;
+          say(error, en, ar);
+        }
+        if (control) control.setAttribute("aria-invalid", "true");
+      }
+
+      function clearError(field) {
+        var error = field.querySelector(".field-error");
+        if (error) {
+          error.hidden = true;
+          say(error, "", "");
+        }
+        field.querySelectorAll("[aria-invalid]").forEach(function (control) {
+          control.removeAttribute("aria-invalid");
+        });
+      }
+
+      function visibleControl(field) {
+        return Array.prototype.find.call(field.querySelectorAll("input, textarea, select"), function (control) {
+          return getComputedStyle(control).display !== "none" && !control.disabled;
+        });
+      }
+
+      function emailOk(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+      }
+
+      function problemsFor(form) {
+        var problems = [];
+        form.querySelectorAll(".form-field").forEach(function (field) {
+          var control = visibleControl(field);
+          var error = field.querySelector(".field-error");
+          if (!control || !error) return;
+          var value = (control.value || "").trim();
+          var name = control.getAttribute("name");
+          if (!value) {
+            if (name === "email") problems.push([error, control, "Enter your email.", "أدخل البريد الإلكتروني."]);
+            else if (name === "message") problems.push([error, control, "Enter a message.", "أدخل الرسالة."]);
+            else if (name === "help") problems.push([error, control, "Say how you can help.", "اذكر كيف يمكنك المساعدة."]);
+            else if (name === "country") problems.push([error, control, "Enter your country.", "أدخل البلد."]);
+            else if (name === "role") problems.push([error, control, "Choose a role.", "اختر الصفة."]);
+            else problems.push([error, control, "Enter your name.", "أدخل الاسم."]);
+          } else if (name === "email" && !emailOk(value)) {
+            problems.push([error, control, "Enter a real email.", "أدخل بريداً إلكترونياً صالحاً."]);
+          }
+        });
+        return problems;
       }
 
       function renderLetter() {
@@ -334,6 +527,8 @@ const joinConnected = joinId.length > 0;
         form.addEventListener("input", function (event) {
           if (!event.isTrusted) return;
           if (form.getAttribute("data-sending") === "true") return;
+          var field = event.target && event.target.closest ? event.target.closest(".form-field") : null;
+          if (field) clearError(field);
           say(status, "", "");
         });
         form.addEventListener("submit", function (event) {
@@ -341,17 +536,22 @@ const joinConnected = joinId.length > 0;
           var kind = form.getAttribute("data-kind") || "";
           var id = String(ids[kind] || "").trim();
           var button = form.querySelector("button[type='submit']");
+          syncSelects();
+          form.querySelectorAll(".form-field").forEach(clearError);
+          var problems = problemsFor(form);
+          if (problems.length) {
+            problems.forEach(function (problem) {
+              markError(problem[0], problem[1], problem[2], problem[3]);
+            });
+            if (problems[0][1]) problems[0][1].focus();
+            return;
+          }
           if (!id) {
             say(
               status,
               "Sending is not connected yet. Nothing you type here is sent.",
               "الإرسال غير موصول بعد. لن يُرسل ما كتبته.",
             );
-            return;
-          }
-          syncSelects();
-          if (!form.checkValidity()) {
-            form.reportValidity();
             return;
           }
           say(status, "Sending.", "جارٍ الإرسال.");
