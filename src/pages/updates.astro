@@ -30,27 +30,50 @@ import { updates } from "../data/updates";
         </article>
       ) : (
         updates.map((post) => (
-          <article id={post.id} class="case-sheet update-sheet">
-            <h2>
-              <span class="en">{post.titleEn}</span>
-              <span class="ar" lang="ar">
-                {post.titleAr}
-              </span>
-            </h2>
-            <p class="prose">
-              <span class="en">
-                <time class="update-date" datetime={post.date}>
-                  {post.dateEn}
-                </time>{" "}
-                {post.bodyEn}
-              </span>
-              <span class="ar" lang="ar">
-                <time class="update-date" datetime={post.date}>
-                  {post.dateAr}
-                </time>{" "}
-                {post.bodyAr}
-              </span>
-            </p>
+          <article id={post.id} class:list={["case-sheet", "update-sheet", { "has-image": Boolean(post.image) }]}>
+            <div class="update-copy">
+              <h2>
+                <span class="en">{post.titleEn}</span>
+                <span class="ar" lang="ar">
+                  {post.titleAr}
+                </span>
+              </h2>
+              <p class="prose">
+                <span class="en">
+                  <time class="update-date" datetime={post.date}>
+                    {post.dateEn}
+                  </time>{" "}
+                  {post.bodyEn}
+                </span>
+                <span class="ar" lang="ar">
+                  <time class="update-date" datetime={post.date}>
+                    {post.dateAr}
+                  </time>{" "}
+                  {post.bodyAr}
+                </span>
+              </p>
+            </div>
+            {
+              post.image && (
+                <>
+                  <img
+                    class="update-plate en"
+                    src={post.image.src}
+                    width="640"
+                    height="420"
+                    alt={post.image.altEn}
+                  />
+                  <img
+                    class="update-plate ar"
+                    src={post.image.src}
+                    width="640"
+                    height="420"
+                    lang="ar"
+                    alt={post.image.altAr}
+                  />
+                </>
+              )
+            }
           </article>
         ))
       )

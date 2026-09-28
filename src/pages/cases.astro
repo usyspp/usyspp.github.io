@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Institution from "../components/Institution.astro";
 import { cases } from "../data/cases";
 ---
 
@@ -36,10 +37,8 @@ import { cases } from "../data/cases";
             <span class="ar" lang="ar">
               {person.fieldAr}
             </span>
-            <span class="case-at" lang="en">
-              {person.institution}
-            </span>
           </p>
+          <Institution name={person.institution} />
           <p class="prose">
             <span class="en">{person.bodyEn}</span>
             <span class="ar" lang="ar">

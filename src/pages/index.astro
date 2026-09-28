@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Institution from "../components/Institution.astro";
 import { cases } from "../data/cases";
 
 const descriptionEn =
@@ -94,10 +95,8 @@ const descriptionAr =
                       <span class="ar" lang="ar">
                         {person.fieldAr}
                       </span>
-                      <span class="case-at" lang="en">
-                        {person.institution}
-                      </span>
                     </p>
+                    <Institution name={person.institution} />
                   </div>
                   <p class="case-line">
                     <span class="en">{person.sentenceEn}</span>
