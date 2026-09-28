@@ -361,19 +361,20 @@ html[dir="rtl"] .masthead {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 40rem;
-  padding: clamp(1.5rem, 4vw, 3.25rem);
+  max-width: 46rem;
+  padding: clamp(1.15rem, 2.4vw, 1.85rem);
 }
 
 .parcel h1 {
-  margin: 0 0 1.1rem;
-  font-size: clamp(2.45rem, 4.5vw, 4.5rem);
+  margin: 0 0 0.7rem;
+  font-size: clamp(2.15rem, 3.2vw, 3.35rem);
   color: var(--wheat);
 }
 
 .parcel .prose {
   color: var(--wheat);
-  max-width: 38ch;
+  max-width: 62ch;
+  text-wrap: pretty;
 }
 
 .trace {
@@ -415,17 +416,17 @@ html[dir="rtl"] .masthead {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.15rem;
-  min-height: 100%;
+  gap: 0;
+  min-height: 0;
   margin: 0;
-  padding: clamp(1.15rem, 2.5vw, 2rem) 0;
+  padding: 0.7rem 0;
   list-style: none;
   background: var(--forest);
   color: var(--wheat);
 }
 
 .timeline li {
-  padding: 0.7rem clamp(1.1rem, 2vw, 1.45rem);
+  padding: 0.42rem clamp(1.1rem, 2vw, 1.45rem);
 }
 
 .timeline p {
@@ -445,7 +446,7 @@ html[dir="rtl"] .masthead {
 
 .timeline .mark {
   background: var(--umber-bright);
-  padding-block: 0.95rem;
+  padding-block: 0.55rem;
 }
 
 html[dir="rtl"] .timeline p {
