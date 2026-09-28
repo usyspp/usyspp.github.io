@@ -10,8 +10,8 @@ const connected = formspreeId.trim().length > 0;
   descriptionEn="Copy a letter to a U.S. official or a Syrian government recipient, or contact and join Syrian Scholars for Peace and Prosperity."
   descriptionAr="انسخ رسالة إلى مسؤول أمريكي أو إلى جهة في الحكومة السورية، أو راسل الباحثين السوريين من أجل السلام والازدهار وانضم إليهم."
 >
-  <main id="case" class="cases-page">
-    <header class="cases-intro">
+  <main id="case" class="cases-page act-page">
+    <header class="cases-intro act-intro">
       <h1>
         <span class="en">Act</span>
         <span class="ar" lang="ar">بادر</span>
@@ -22,7 +22,8 @@ const connected = formspreeId.trim().length > 0;
       </p>
     </header>
 
-    <section id="write" class="case-sheet act-sheet">
+    <div class="act-board">
+    <section id="write" class="case-sheet act-sheet act-pane act-write">
       <h2>
         <span class="en">Write an official</span>
         <span class="ar" lang="ar">اكتب إلى مسؤول</span>
@@ -71,7 +72,7 @@ const connected = formspreeId.trim().length > 0;
       <p class="form-status" id="copy-status" aria-live="polite"></p>
     </section>
 
-    <section id="contact" class="case-sheet act-sheet">
+    <section id="contact" class="case-sheet act-sheet act-pane">
       <h2>
         <span class="en">Contact</span>
         <span class="ar" lang="ar">راسل</span>
@@ -88,17 +89,17 @@ const connected = formspreeId.trim().length > 0;
             </p>
           )
         }
-        <label class="field">
+        <label class="form-field">
           <span class="en">Name</span>
           <span class="ar" lang="ar">الاسم</span>
           <input name="name" type="text" autocomplete="name" required />
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">Email</span>
           <span class="ar" lang="ar">البريد الإلكتروني</span>
           <input name="email" type="email" autocomplete="email" required />
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">Role</span>
           <span class="ar" lang="ar">الصفة</span>
           <select class="en" name="role" required>
@@ -114,7 +115,7 @@ const connected = formspreeId.trim().length > 0;
             <option value="other">غير ذلك</option>
           </select>
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">Message</span>
           <span class="ar" lang="ar">الرسالة</span>
           <textarea name="message" rows="5" required></textarea>
@@ -137,7 +138,7 @@ const connected = formspreeId.trim().length > 0;
       </form>
     </section>
 
-    <section id="join" class="case-sheet act-sheet">
+    <section id="join" class="case-sheet act-sheet act-pane">
       <h2>
         <span class="en">Join</span>
         <span class="ar" lang="ar">انضم</span>
@@ -154,22 +155,22 @@ const connected = formspreeId.trim().length > 0;
             </p>
           )
         }
-        <label class="field">
+        <label class="form-field">
           <span class="en">Name</span>
           <span class="ar" lang="ar">الاسم</span>
           <input name="name" type="text" autocomplete="name" required />
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">Email</span>
           <span class="ar" lang="ar">البريد الإلكتروني</span>
           <input name="email" type="email" autocomplete="email" required />
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">Country</span>
           <span class="ar" lang="ar">البلد</span>
           <input name="country" type="text" autocomplete="country-name" required />
         </label>
-        <label class="field">
+        <label class="form-field">
           <span class="en">How you can help</span>
           <span class="ar" lang="ar">كيف يمكنك المساعدة</span>
           <textarea name="help" rows="5" required></textarea>
@@ -191,6 +192,7 @@ const connected = formspreeId.trim().length > 0;
         <p class="form-status" data-status aria-live="polite"></p>
       </form>
     </section>
+    </div>
   </main>
   <script is:inline data-astro-rerun define:vars={{ letters, formspreeId }}>
     (function () {
@@ -221,6 +223,27 @@ const connected = formspreeId.trim().length > 0;
         return lang() === "ar" ? ar : en;
       }
 
+      function say(node, en, ar) {
+        if (!node) return;
+        if (!en) {
+          node.removeAttribute("data-en");
+          node.removeAttribute("data-ar");
+          node.textContent = "";
+          return;
+        }
+        node.setAttribute("data-en", en);
+        node.setAttribute("data-ar", ar);
+        node.textContent = text(en, ar);
+      }
+
+      function paintStatus() {
+        document.querySelectorAll("#copy-status, [data-status]").forEach(function (node) {
+          var en = node.getAttribute("data-en");
+          var ar = node.getAttribute("data-ar");
+          if (en) node.textContent = text(en, ar || en);
+        });
+      }
+
       function renderLetter() {
         if (!letter) return;
         var key = writer + "-" + recipient;
@@ -237,14 +260,14 @@ const connected = formspreeId.trim().length > 0;
       document.querySelectorAll("[data-writer]").forEach(function (button) {
         button.addEventListener("click", function () {
           writer = button.getAttribute("data-writer") || writer;
-          if (copyStatus) copyStatus.textContent = "";
+          say(copyStatus, "", "");
           renderLetter();
         });
       });
       document.querySelectorAll("[data-recipient]").forEach(function (button) {
         button.addEventListener("click", function () {
           recipient = button.getAttribute("data-recipient") || recipient;
-          if (copyStatus) copyStatus.textContent = "";
+          say(copyStatus, "", "");
           renderLetter();
         });
       });
@@ -255,9 +278,11 @@ const connected = formspreeId.trim().length > 0;
           var value = letter ? letter.textContent || "" : "";
           function done(ok) {
             if (!copyStatus) return;
-            copyStatus.textContent = ok
-              ? text("The letter is copied.", "نُسخت الرسالة.")
-              : text("Copy failed. Select the letter and copy it.", "تعذر النسخ. حدّد الرسالة وانسخها.");
+            say(
+              copyStatus,
+              ok ? "The letter is copied." : "Copy failed. Select the letter and copy it.",
+              ok ? "نُسخت الرسالة." : "تعذر النسخ. حدّد الرسالة وانسخها.",
+            );
           }
           function selectLetter() {
             if (!letter) return;
@@ -294,6 +319,7 @@ const connected = formspreeId.trim().length > 0;
           select.required = arabic;
         });
         renderLetter();
+        paintStatus();
       }
 
       var id = (formspreeId || "").trim();
@@ -303,19 +329,18 @@ const connected = formspreeId.trim().length > 0;
           var status = form.querySelector("[data-status]");
           var button = form.querySelector("button[type='submit']");
           if (!id) {
-            if (status) {
-              status.textContent = text(
-                "Sending is not connected yet. Nothing you type here is sent.",
-                "الإرسال غير موصول بعد. لن يُرسل ما كتبته.",
-              );
-            }
+            say(
+              status,
+              "Sending is not connected yet. Nothing you type here is sent.",
+              "الإرسال غير موصول بعد. لن يُرسل ما كتبته.",
+            );
             return;
           }
           if (!form.checkValidity()) {
             form.reportValidity();
             return;
           }
-          if (status) status.textContent = text("Sending.", "جارٍ الإرسال.");
+          say(status, "Sending.", "جارٍ الإرسال.");
           if (button) button.disabled = true;
           fetch("https://formspree.io/f/" + id, {
             method: "POST",
@@ -324,17 +349,16 @@ const connected = formspreeId.trim().length > 0;
           })
             .then(function (response) {
               if (!response.ok) throw new Error("status");
-              if (status) status.textContent = text("Your message was received.", "وصلت رسالتك.");
+              say(status, "Your message was received.", "وصلت رسالتك.");
               form.reset();
               syncSelects();
             })
             .catch(function () {
-              if (status) {
-                status.textContent = text(
-                  "Sending failed. Nothing was confirmed. Try again.",
-                  "تعذر الإرسال. لم يُؤكَّد شيء. أعد المحاولة.",
-                );
-              }
+              say(
+                status,
+                "Sending failed. Nothing was confirmed. Try again.",
+                "تعذر الإرسال. لم يُؤكَّد شيء. أعد المحاولة.",
+              );
             })
             .then(function () {
               if (button) button.disabled = false;
