@@ -187,10 +187,31 @@ const descriptionAr =
       </a>
     </section>
   </main>
-  <script is:inline>
+  <script is:inline data-astro-rerun>
     (function () {
       var rail = document.querySelector("[data-cases]");
       if (!rail) return;
+      if (window.__sspTapeStop) window.__sspTapeStop();
+      var tapeAbort = new AbortController();
+      var tapeObservers = [];
+      window.__sspTapeStop = function () {
+        tapeAbort.abort();
+        tapeObservers.forEach(function (observer) {
+          observer.disconnect();
+        });
+        window.__sspTapeStop = null;
+      };
+      if (!window.__sspTapeHook) {
+        window.__sspTapeHook = true;
+        document.addEventListener("astro:before-swap", function () {
+          if (window.__sspTapeStop) window.__sspTapeStop();
+        });
+      }
+      function listen(target, type, fn, options) {
+        var opts = options && typeof options === "object" ? Object.assign({}, options) : { capture: !!options };
+        opts.signal = tapeAbort.signal;
+        target.addEventListener(type, fn, opts);
+      }
       var track = rail.querySelector(".cases-track");
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
       var seen = true;
@@ -314,7 +335,7 @@ const descriptionAr =
       }
 
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver(
+        var seenObserver = new IntersectionObserver(
           function (entries) {
             seen = entries.some(function (entry) {
               return entry.isIntersecting;
@@ -322,11 +343,13 @@ const descriptionAr =
             sync();
           },
           { threshold: 0.2 },
-        ).observe(rail);
+        );
+        seenObserver.observe(rail);
+        tapeObservers.push(seenObserver);
       }
 
-      document.addEventListener("visibilitychange", sync);
-      if (typeof reduce.addEventListener === "function") reduce.addEventListener("change", sync);
+      listen(document, "visibilitychange", sync);
+      if (typeof reduce.addEventListener === "function") listen(reduce, "change", sync);
 
       function syncHover(event) {
         pointerInside = pointerInRail(event);
@@ -340,27 +363,27 @@ const descriptionAr =
         else if (!dragging) release();
       }
 
-      rail.addEventListener("pointerenter", function () {
+      listen(rail, "pointerenter", function () {
         pointerInside = true;
         freeze();
       });
-      rail.addEventListener("pointerleave", function () {
+      listen(rail, "pointerleave", function () {
         pointerInside = false;
         if (!dragging) release();
       });
-      document.addEventListener("pointermove", syncHover);
-      rail.addEventListener("focusin", function () {
+      listen(document, "pointermove", syncHover);
+      listen(rail, "focusin", function () {
         focusInside = keyboardFocusInside();
         if (focusInside) freeze();
       });
-      rail.addEventListener("focusout", function () {
+      listen(rail, "focusout", function () {
         requestAnimationFrame(function () {
           focusInside = keyboardFocusInside();
           if (!focusInside) release();
         });
       });
 
-      rail.addEventListener("pointerdown", function (event) {
+      listen(rail, "pointerdown", function (event) {
         if (event.pointerType !== "mouse" || event.button !== 0) {
           pointerInside = true;
           freeze();
@@ -389,7 +412,8 @@ const descriptionAr =
         pointerInside = pointerInRail(event);
         focusInside = keyboardFocusInside();
         if (dragMoved) {
-          rail.addEventListener(
+          listen(
+            rail,
             "click",
             function block(clickEvent) {
               clickEvent.preventDefault();
@@ -401,12 +425,13 @@ const descriptionAr =
         }
         release();
       }
-      document.addEventListener("pointerup", endDrag);
-      document.addEventListener("pointercancel", endDrag);
-      rail.addEventListener("dragstart", function (event) {
+      listen(document, "pointerup", endDrag);
+      listen(document, "pointercancel", endDrag);
+      listen(rail, "dragstart", function (event) {
         event.preventDefault();
       });
-      rail.addEventListener(
+      listen(
+        rail,
         "scroll",
         function () {
           if (wrapping || reduce.matches || !rail.classList.contains("is-paused")) return;
@@ -424,7 +449,7 @@ const descriptionAr =
         { passive: true },
       );
 
-      new MutationObserver(function () {
+      var dirObserver = new MutationObserver(function () {
         track.style.removeProperty("--cases-delay");
         if (!rail.classList.contains("is-paused")) return;
         rail.classList.remove("is-paused");
@@ -432,7 +457,9 @@ const descriptionAr =
         track.style.removeProperty("transform");
         rail.scrollLeft = 0;
         if (held()) freeze();
-      }).observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
+      });
+      dirObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
+      tapeObservers.push(dirObserver);
 
       sync();
     })();

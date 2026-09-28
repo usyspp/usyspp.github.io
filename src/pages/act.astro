@@ -192,8 +192,22 @@ const connected = formspreeId.trim().length > 0;
       </form>
     </section>
   </main>
-  <script is:inline define:vars={{ letters, formspreeId }}>
+  <script is:inline data-astro-rerun define:vars={{ letters, formspreeId }}>
     (function () {
+      if (window.__sspActStop) window.__sspActStop();
+      var actObservers = [];
+      window.__sspActStop = function () {
+        actObservers.forEach(function (observer) {
+          observer.disconnect();
+        });
+        window.__sspActStop = null;
+      };
+      if (!window.__sspActHook) {
+        window.__sspActHook = true;
+        document.addEventListener("astro:before-swap", function () {
+          if (window.__sspActStop) window.__sspActStop();
+        });
+      }
       var writer = "supporter";
       var recipient = "us";
       var letter = document.getElementById("letter");
@@ -328,10 +342,12 @@ const connected = formspreeId.trim().length > 0;
         });
       });
 
-      new MutationObserver(syncSelects).observe(document.documentElement, {
+      var langObserver = new MutationObserver(syncSelects);
+      langObserver.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["lang"],
       });
+      actObservers.push(langObserver);
       syncSelects();
     })();
   </script>

@@ -54,7 +54,7 @@ import { cases } from "../data/cases";
       <span class="ar" lang="ar">العودة إلى القضية</span>
     </a>
   </main>
-  <script is:inline>
+  <script is:inline data-astro-rerun>
     (function () {
       function align() {
         var id = "";
@@ -68,8 +68,7 @@ import { cases } from "../data/cases";
         if (el) el.scrollIntoView();
       }
       align();
-      window.addEventListener("load", align);
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+      requestAnimationFrame(align);
     })();
   </script>
 </Base>
