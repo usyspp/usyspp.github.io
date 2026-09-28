@@ -1,20 +1,60 @@
 ---
 import Base from "../layouts/Base.astro";
+import { updates } from "../data/updates";
 ---
 
 <Base
-  descriptionEn="Updates from Syrian Scholars for Peace and Prosperity."
-  descriptionAr="مستجدات الباحثين السوريين من أجل السلام والازدهار."
+  descriptionEn="Dated notes from Syrian Scholars for Peace and Prosperity on the public record already set out on the home page."
+  descriptionAr="مذكرات مؤرخة من الباحثين السوريين من أجل السلام والازدهار عن الوقائع العلنية المبينة في الصفحة الرئيسية."
 >
-  <main id="case" class="sheet-note">
-    <h1>
-      <span class="en">Updates</span>
-      <span class="ar" lang="ar">المستجدات</span>
-    </h1>
-    <p class="prose">
-      <span class="en">The coalition will post updates on this sheet over time.</span>
-      <span class="ar" lang="ar">سينشر الائتلاف المستجدات على هذه الورقة مع الوقت.</span>
-    </p>
+  <main id="case" class="cases-page">
+    <header class="cases-intro">
+      <h1>
+        <span class="en">Updates</span>
+        <span class="ar" lang="ar">المستجدات</span>
+      </h1>
+      <p class="prose">
+        <span class="en">Notes on the public dates already set out on the home page.</span>
+        <span class="ar" lang="ar">مذكرات عن التواريخ العلنية المبينة أصلاً في الصفحة الرئيسية.</span>
+      </p>
+    </header>
+    {
+      updates.length === 0 ? (
+        <article class="case-sheet">
+          <p class="prose">
+            <span class="en">There are no notes yet.</span>
+            <span class="ar" lang="ar">
+              لا مذكرات بعد.
+            </span>
+          </p>
+        </article>
+      ) : (
+        updates.map((post) => (
+          <article id={post.id} class="case-sheet update-sheet">
+            <h2>
+              <span class="en">{post.titleEn}</span>
+              <span class="ar" lang="ar">
+                {post.titleAr}
+              </span>
+            </h2>
+            <p class="prose">
+              <span class="en">
+                <time class="update-date" datetime={post.date}>
+                  {post.dateEn}
+                </time>{" "}
+                {post.bodyEn}
+              </span>
+              <span class="ar" lang="ar">
+                <time class="update-date" datetime={post.date}>
+                  {post.dateAr}
+                </time>{" "}
+                {post.bodyAr}
+              </span>
+            </p>
+          </article>
+        ))
+      )
+    }
     <a class="return" href="/">
       <span class="en">Return to the case</span>
       <span class="ar" lang="ar">العودة إلى القضية</span>

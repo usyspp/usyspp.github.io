@@ -699,6 +699,18 @@ html[dir="rtl"] .case-line {
   color: var(--ink);
 }
 
+.update-sheet h2 {
+  max-width: 22ch;
+}
+
+.update-date {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--forest);
+  letter-spacing: 0;
+}
+
 .case-sheet .case-place {
   margin-top: 0.85rem;
 }
