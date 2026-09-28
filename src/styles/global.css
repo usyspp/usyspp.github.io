@@ -1317,12 +1317,36 @@ html[dir="rtl"] .form-field textarea {
   }
 }
 
-::view-transition-old(root),
+@keyframes sheet-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+  }
+}
+
+::view-transition-old(root) {
+  opacity: 1;
+  mix-blend-mode: normal;
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both sheet-out;
+}
+
 ::view-transition-new(root) {
-  animation: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+  animation: 140ms cubic-bezier(0.16, 1, 0.3, 1) both sheet-in;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
   .trace-run {
     animation: none;
     stroke-dashoffset: 0;
