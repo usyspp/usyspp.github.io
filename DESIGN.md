@@ -89,7 +89,7 @@ components:
 
 The site is one survey sheet on a forest board. A wheat title block carries the coalition’s name and the way out. The case is drawn as parcels: umber for what Presidential Proclamation 10998 still blocks, survey green for what 2025 and 2026 already lifted. English prose is Petrona. Arabic prose is Amiri. Chrome in both languages is Readex Pro. The sheet flips to real right-to-left on the same page.
 
-Density changes on purpose. The first screen is two fields and one line that keys the colors. A wheat tape of cases crosses the forest board and advances on its own. The reading room is one wheat sheet: why the restrictions no longer hold, and one mission sentence. The close is three buttons on survey green: write, contact, and join.
+Density changes on purpose. The first screen is two fields, only as tall as the claim and the timeline. A wheat tape of cases crosses the forest board and advances on its own. The reading room is one wheat sheet: why the restrictions no longer hold, beside a handshake plate, and one mission sentence beside a plate of the two flags. The close is three buttons on survey green: write, contact, and join.
 
 **Key Characteristics:**
 
@@ -141,7 +141,7 @@ The palette is the four committed families, used as fields rather than tints.
 - **Headline** (Petrona 500, clamp(2rem, 4vw, 3.25rem)): Section statements in the reading room and the mission sentence. Arabic uses Amiri 700.
 - **Title** (Readex Pro 600, clamp(1.2rem, 1.6vw, 1.45rem)): Timeline entries.
 - **Body** (Petrona 400, 1.2rem, line-height 1.55, max 68ch): The English case. Arabic body is Amiri 400 at 1.35rem, line-height 1.9.
-- **Label** (Readex Pro 500, 1rem): Navigation, the color key, language, and buttons. On a phone the header controls step down to 0.875rem so the name can take one line and the navigation, switch, and letter action can share the next. Institution names stay in Petrona even in Arabic.
+- **Label** (Readex Pro 500, 1rem): Navigation, language, and buttons. On a phone the name and the language switch share the first line, and the navigation sits on the second at 0.875rem. The letter action is not in the phone header. Institution names stay in Petrona even in Arabic.
 
 ### Named Rules
 
@@ -149,7 +149,7 @@ The palette is the four committed families, used as fields rather than tints.
 
 ## Layout
 
-Desktop keeps the first screen to the viewport: a one-row wheat title block (name, navigation, language switch, and the letter action), then a two-column field (blocked parcel about 1.15fr, a green timeline at least 20rem), then one static color line. Below 1080px the title block wraps to two lines. Below 860px the field stacks. The language switch is the same small control on both. The cases tape is a horizontal row of wheat parcels on the forest board. It advances on its own, pauses on hover and keyboard focus, and does not advance when the visitor prefers reduced motion; that visitor scrolls the row by hand. Reading is one full-bleed wheat band. Prose stays within 68 characters. Space above a heading is the section padding; space under it is about 0.9rem.
+The first screen is only as tall as its content: a one-row wheat title block on a computer (name, navigation, language switch, and the letter action), then a two-column field (blocked parcel about 1.15fr, a green timeline at least 20rem). Below 1080px the title block wraps. On a phone the name and the language switch share the first line, and the navigation sits on the second. The letter action stays out of the phone header. Below 860px the field stacks. The language switch is the same small control on both. The cases tape is a horizontal row of wheat parcels on the forest board. It advances on its own, pauses when the pointer is over the rail or a card has keyboard focus, and while paused that offset becomes a scroll position the visitor can drag or swipe. It does not advance when the visitor prefers reduced motion; that visitor scrolls the row by hand. Reading is one full-bleed wheat band. The circumstances sit beside a handshake plate on the right in English. The mission sentence sits beside a plate of the Syrian and U.S. flags on the left in English. On a phone each plate stacks under its text at full width. Prose stays within 68 characters. Space above a heading is the section padding; space under it is about 0.9rem. The close is three buttons in one row on a laptop, and three equal full-width buttons on a phone.
 
 ## Elevation & Depth
 
@@ -170,25 +170,24 @@ Corners are square (`0`). Parcels meet at 1px seams. The blocked parcel carries 
 - **Shape:** Square.
 - **Primary:** Survey Green ground, Wheat Sheet text, Readex Pro 600, padding 0.8rem 1.2rem, minimum height 48px.
 - **Hover / Focus:** Hover moves the ground to Forest Board. Focus is a 2px Contour Gold ring, offset 3px; on wheat the ring is Survey Green.
-- **Close:** Write an official, Contact, and Join are three buttons on the survey-green station. On that green field the buttons are Wheat Sheet with Survey Green text, and hover moves them to Forest Board.
+- **Close:** Write an official, Contact, and Join are three buttons on the survey-green station. On that green field the buttons are Wheat Sheet with Survey Green text, and hover moves them to Forest Board. On a laptop they stay one row. On a phone they stack, each the full width of the station.
 
 ### Chips
 
-- **Color key:** One line of Readex Pro under the field: blocked is dark, lifted is green. It is not a control and it does not hide copy.
-- **Language:** One square switch in the title block, with a 1px Wheat Ink border. It names the other language: العربية on the English page, English on the Arabic page. It is not repeated in the footer.
+- **Language:** One square switch in the title block, with a 1px Wheat Ink border. It names the other language: العربية on the English page, English on the Arabic page. It is not repeated in the footer. On a phone it sits on the first line, beside the name.
 
 ### Parcels
 
 - **Corner style:** Square.
 - **Blocked:** Blocked Umber, Wheat Sheet text, padding clamp(1.5rem, 4vw, 3.25rem).
-- **Lifted:** One Survey Green field with a dated timeline. Dates are Contour Gold with tabular figures. The proclamation is one Blocked Umber mark on that field, and both of its dates sit on that mark.
+- **Lifted:** One Survey Green field with a dated timeline. Dates are Contour Gold with tabular figures. Each event has one date, written first. The proclamation is the one Blocked Umber mark on that field.
 - **Reading:** Wheat Sheet bands. Institution names are Petrona in Survey Green.
 - **Shadow:** None.
 - **Border:** The gold seam, not a side stripe.
 
 ### Cases tape
 
-Square wheat parcels in one horizontal row, separated by a 1px Contour Gold seam. Each parcel is a link: a name, a field, an institution in Petrona Survey Green, and one sentence. No photographs, logos, or press. The row advances as a continuous shift, pauses while the pointer or keyboard focus is on it, and links to that person’s anchor on the cases sheet. Reduced motion leaves the row still, for hand scrolling. On the cases sheet each person is a wheat band with the same name, field, institution, and a short reading of the case.
+Square wheat parcels in one horizontal row, separated by a 1px Contour Gold seam. Each parcel is a link: a name, a field, an institution in Petrona Survey Green, and one sentence. No photographs, logos, or press. The row advances as a continuous shift. It pauses only when the pointer is over the rail, or when a card has keyboard focus. While paused, the current offset becomes a real scroll position so the visitor can drag or swipe. When the pointer leaves, and no card is focused, it advances again from that position. The heading above the rail does not pause it. Reduced motion leaves the row still, for hand scrolling. On the cases sheet each person is a wheat band with the same name, field, institution, and a short reading of the case.
 
 ### Navigation
 
@@ -196,7 +195,7 @@ Readex Pro, Soft Charcoal at rest, Survey Green with a 1px underline when curren
 
 ### Title block
 
-Wheat band, one row on a computer: the coalition name in Readex Pro 600, the primary nav, the language switch, and the letter action. The action sits at the inline end, with empty wheat beside it. In Arabic that end is on the left. On a phone the name takes the first line and the controls the next.
+Wheat band, one row on a computer: the coalition name in Readex Pro 600, the primary nav, the language switch, and the letter action. The action sits at the inline end, with empty wheat beside it. In Arabic that end is on the left. On a phone the name and the language switch share the first line, and the navigation sits on the second. The letter action is not in the phone header.
 
 ## Do's and Don'ts
 

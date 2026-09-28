@@ -45,14 +45,8 @@ const descriptionAr =
           </li>
           <li>
             <p>
-              <span class="en"><time datetime="2025-06-30">30 June 2025</time> — comprehensive U.S. sanctions terminated, in force <time datetime="2025-07-01">1 July 2025</time></span>
-              <span class="ar" lang="ar"><time datetime="2025-06-30">30 حزيران/يونيو 2025</time> — أُنهيت العقوبات الأمريكية الشاملة، وسارية من <time datetime="2025-07-01">1 تموز/يوليو 2025</time></span>
-            </p>
-          </li>
-          <li class="mark">
-            <p>
-              <span class="en"><time datetime="2025-12-16">16 December 2025</time> signed, in force <time datetime="2026-01-01">1 January 2026</time> — Presidential Proclamation 10998 blocks entry</span>
-              <span class="ar" lang="ar">وُقّع في <time datetime="2025-12-16">16 كانون الأول/ديسمبر 2025</time>، وساري من <time datetime="2026-01-01">1 كانون الثاني/يناير 2026</time> — الإعلان الرئاسي 10998 يمنع الدخول</span>
+              <span class="en"><time datetime="2025-06-30">30 June 2025</time> — U.S. sanctions terminated</span>
+              <span class="ar" lang="ar"><time datetime="2025-06-30">30 حزيران/يونيو 2025</time> — أُنهيت العقوبات الأمريكية</span>
             </p>
           </li>
           <li>
@@ -61,18 +55,20 @@ const descriptionAr =
               <span class="ar" lang="ar"><time datetime="2025-12-18">18 كانون الأول/ديسمبر 2025</time> — أُلغي قانون قيصر</span>
             </p>
           </li>
+          <li class="mark">
+            <p>
+              <span class="en"><time datetime="2026-01-01">1 January 2026</time> — Presidential Proclamation 10998 blocks entry</span>
+              <span class="ar" lang="ar"><time datetime="2026-01-01">1 كانون الثاني/يناير 2026</time> — الإعلان الرئاسي 10998 يمنع الدخول</span>
+            </p>
+          </li>
           <li>
             <p>
-              <span class="en"><time datetime="2026-08-24">24 August 2026</time> — Syria’s State Sponsor of Terrorism designation rescinded</span>
-              <span class="ar" lang="ar"><time datetime="2026-08-24">24 آب/أغسطس 2026</time> — أُلغي تصنيف سوريا كدولة راعية للإرهاب</span>
+              <span class="en"><time datetime="2026-08-24">24 August 2026</time> — State Sponsor of Terrorism designation rescinded</span>
+              <span class="ar" lang="ar"><time datetime="2026-08-24">24 آب/أغسطس 2026</time> — أُلغي تصنيف الدولة الراعية للإرهاب</span>
             </p>
           </li>
         </ol>
       </div>
-      <p class="key">
-        <span class="en">Blocked is dark. Lifted is green.</span>
-        <span class="ar" lang="ar">المنع داكن. ما رُفع أخضر.</span>
-      </p>
     </div>
 
     <section class="tape" aria-labelledby="tape-title">
@@ -119,24 +115,60 @@ const descriptionAr =
 
     <div class="reading">
       <section id="change">
-        <h2>
-          <span class="en">The circumstances that necessitated these restrictions no longer exist.</span>
-          <span class="ar" lang="ar">لم تعد الظروف التي اقتضت هذه القيود قائمة.</span>
-        </h2>
-        <p class="prose">
-          <span class="en">
-            Syria is recovering. It no longer constitutes a security threat to anyone and is actively
-            transitioning into a center for regional peace, development, and prosperity.
-          </span>
-          <span class="ar" lang="ar">
-            سوريا تتعافى. لم تعد تشكل تهديداً أمنياً لأحد، وهي تنتقل بفاعلية لتصبح مركزاً للسلام والتنمية
-            والازدهار في المنطقة.
-          </span>
-        </p>
-        <p class="mission" id="mission">
-          <span class="en">We will study in the United States, then return to rebuild Syria.</span>
-          <span class="ar" lang="ar">سندرس في الولايات المتحدة، ثم نعود لإعادة إعمار سوريا.</span>
-        </p>
+        <div class="circumstance">
+          <div class="circumstance-copy">
+            <h2>
+              <span class="en">The circumstances that necessitated these restrictions no longer exist.</span>
+              <span class="ar" lang="ar">لم تعد الظروف التي اقتضت هذه القيود قائمة.</span>
+            </h2>
+            <p class="prose">
+              <span class="en">
+                Syria is recovering. It no longer constitutes a security threat to anyone and is actively
+                transitioning into a center for regional peace, development, and prosperity.
+              </span>
+              <span class="ar" lang="ar">
+                سوريا تتعافى. لم تعد تشكل تهديداً أمنياً لأحد، وهي تنتقل بفاعلية لتصبح مركزاً للسلام والتنمية
+                والازدهار في المنطقة.
+              </span>
+            </p>
+          </div>
+          <img
+            class="plate en"
+            src="/placeholders/handshake.svg"
+            width="640"
+            height="420"
+            alt="Placeholder image of a handshake."
+          />
+          <img
+            class="plate ar"
+            src="/placeholders/handshake.svg"
+            width="640"
+            height="420"
+            lang="ar"
+            alt="صورة نائبة لمصافحة."
+          />
+        </div>
+        <div class="mission-row" id="mission">
+          <img
+            class="plate en"
+            src="/placeholders/flags.svg"
+            width="760"
+            height="300"
+            alt="Placeholder image of the Syrian and U.S. flags."
+          />
+          <img
+            class="plate ar"
+            src="/placeholders/flags.svg"
+            width="760"
+            height="300"
+            lang="ar"
+            alt="صورة نائبة لعلمي سوريا والولايات المتحدة."
+          />
+          <p class="mission">
+            <span class="en">We will study in the United States, then return to rebuild Syria.</span>
+            <span class="ar" lang="ar">سندرس في الولايات المتحدة، ثم نعود لإعادة إعمار سوريا.</span>
+          </p>
+        </div>
       </section>
     </div>
 
@@ -162,6 +194,14 @@ const descriptionAr =
       var track = rail.querySelector(".cases-track");
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
       var seen = true;
+      var pointerInside = false;
+      var focusInside = false;
+      var dragging = false;
+      var dragMoved = false;
+      var startX = 0;
+      var startScroll = 0;
+      var scrollPerPx = -1;
+      var wrapping = false;
 
       function clearClones() {
         track.querySelectorAll("[data-clone]").forEach(function (node) {
@@ -169,11 +209,93 @@ const descriptionAr =
         });
       }
 
+      function durationSeconds() {
+        var raw = getComputedStyle(rail).getPropertyValue("--cases-duration").trim() || "42s";
+        var value = parseFloat(raw);
+        if (!isFinite(value) || value <= 0) return 42;
+        return /ms$/i.test(raw) ? value / 1000 : value;
+      }
+
+      function loopWidth() {
+        if (track.querySelector("[data-clone]")) return track.getBoundingClientRect().width / 2;
+        var set = track.querySelector(".cases-set");
+        return set ? set.getBoundingClientRect().width : 0;
+      }
+
+      function marker() {
+        return track.querySelector(".cases-set:not([data-clone]) .case-card");
+      }
+
+      function measurePerPx(card) {
+        var origin = rail.scrollLeft;
+        var before = card.getBoundingClientRect().left;
+        rail.scrollLeft = origin + 12;
+        var after = card.getBoundingClientRect().left;
+        rail.scrollLeft = origin;
+        var per = (after - before) / 12;
+        return Math.abs(per) > 0.01 ? per : -1;
+      }
+
+      function keyboardFocusInside() {
+        var active = document.activeElement;
+        return !!(active && rail.contains(active) && active.closest && active.closest("a") && active.matches(":focus-visible"));
+      }
+
+      function held() {
+        return pointerInside || focusInside || dragging;
+      }
+
+      function pointerInRail(event) {
+        if (!event || typeof event.clientX !== "number") return pointerInside;
+        var box = rail.getBoundingClientRect();
+        return event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
+      }
+
+      function freeze() {
+        if (reduce.matches || rail.classList.contains("is-paused") || !rail.classList.contains("is-live")) return;
+        var card = marker();
+        if (!card) return;
+        var before = card.getBoundingClientRect().left;
+        rail.classList.add("is-paused");
+        track.style.animation = "none";
+        track.style.transform = "none";
+        void track.offsetWidth;
+        var origin = rail.scrollLeft;
+        rail.dataset.origin = String(origin);
+        var after = card.getBoundingClientRect().left;
+        var per = measurePerPx(card);
+        scrollPerPx = per;
+        rail.scrollLeft = origin + (before - after) / per;
+      }
+
+      function release() {
+        if (!rail.classList.contains("is-paused") || held()) return;
+        var card = marker();
+        var width = loopWidth();
+        var origin = Number(rail.dataset.origin || "0");
+        var progress = 0;
+        if (card && width > 1) {
+          var atScroll = card.getBoundingClientRect().left;
+          rail.scrollLeft = origin;
+          var atOrigin = card.getBoundingClientRect().left;
+          var traveled = document.documentElement.dir === "rtl" ? atScroll - atOrigin : atOrigin - atScroll;
+          progress = traveled / width;
+          progress = ((progress % 1) + 1) % 1;
+        }
+        track.style.removeProperty("animation");
+        track.style.removeProperty("transform");
+        track.style.setProperty("--cases-delay", -progress * durationSeconds() + "s");
+        rail.classList.remove("is-paused");
+      }
+
       function sync() {
         rail.classList.toggle("is-quiet", document.hidden || !seen);
         if (reduce.matches) {
           clearClones();
-          rail.classList.remove("is-live");
+          rail.classList.remove("is-live", "is-paused");
+          track.style.removeProperty("animation");
+          track.style.removeProperty("transform");
+          track.style.removeProperty("--cases-delay");
           return;
         }
         if (!track.querySelector("[data-clone]")) {
@@ -188,10 +310,11 @@ const descriptionAr =
           track.appendChild(clone);
         }
         rail.classList.add("is-live");
+        if (held()) freeze();
       }
 
       if ("IntersectionObserver" in window) {
-        var observer = new IntersectionObserver(
+        new IntersectionObserver(
           function (entries) {
             seen = entries.some(function (entry) {
               return entry.isIntersecting;
@@ -199,20 +322,117 @@ const descriptionAr =
             sync();
           },
           { threshold: 0.2 },
-        );
-        observer.observe(rail);
+        ).observe(rail);
       }
 
       document.addEventListener("visibilitychange", sync);
       if (typeof reduce.addEventListener === "function") reduce.addEventListener("change", sync);
 
-      var zone = rail.closest(".tape") || rail;
-      zone.addEventListener("pointerenter", function () {
-        rail.classList.add("is-held");
+      function syncHover(event) {
+        pointerInside = pointerInRail(event);
+        if (dragging && event.pointerType === "mouse") {
+          var dx = event.clientX - startX;
+          if (Math.abs(dx) > 6) dragMoved = true;
+          rail.scrollLeft = startScroll + dx / scrollPerPx;
+          return;
+        }
+        if (pointerInside) freeze();
+        else if (!dragging) release();
+      }
+
+      rail.addEventListener("pointerenter", function () {
+        pointerInside = true;
+        freeze();
       });
-      zone.addEventListener("pointerleave", function () {
-        rail.classList.remove("is-held");
+      rail.addEventListener("pointerleave", function () {
+        pointerInside = false;
+        if (!dragging) release();
       });
+      document.addEventListener("pointermove", syncHover);
+      rail.addEventListener("focusin", function () {
+        focusInside = keyboardFocusInside();
+        if (focusInside) freeze();
+      });
+      rail.addEventListener("focusout", function () {
+        requestAnimationFrame(function () {
+          focusInside = keyboardFocusInside();
+          if (!focusInside) release();
+        });
+      });
+
+      rail.addEventListener("pointerdown", function (event) {
+        if (event.pointerType !== "mouse" || event.button !== 0) {
+          pointerInside = true;
+          freeze();
+          return;
+        }
+        if (!reduce.matches && !rail.classList.contains("is-paused")) freeze();
+        if (!reduce.matches && !rail.classList.contains("is-paused")) return;
+        var card = marker();
+        if (card) scrollPerPx = measurePerPx(card);
+        dragging = true;
+        dragMoved = false;
+        startX = event.clientX;
+        startScroll = rail.scrollLeft;
+        rail.classList.add("is-dragging");
+      });
+      function endDrag(event) {
+        if (event && event.pointerType && event.pointerType !== "mouse") {
+          pointerInside = false;
+          focusInside = keyboardFocusInside();
+          release();
+          return;
+        }
+        if (!dragging) return;
+        dragging = false;
+        rail.classList.remove("is-dragging");
+        pointerInside = pointerInRail(event);
+        focusInside = keyboardFocusInside();
+        if (dragMoved) {
+          rail.addEventListener(
+            "click",
+            function block(clickEvent) {
+              clickEvent.preventDefault();
+              clickEvent.stopPropagation();
+              rail.removeEventListener("click", block, true);
+            },
+            true,
+          );
+        }
+        release();
+      }
+      document.addEventListener("pointerup", endDrag);
+      document.addEventListener("pointercancel", endDrag);
+      rail.addEventListener("dragstart", function (event) {
+        event.preventDefault();
+      });
+      rail.addEventListener(
+        "scroll",
+        function () {
+          if (wrapping || reduce.matches || !rail.classList.contains("is-paused")) return;
+          var width = loopWidth();
+          if (width < 8) return;
+          var origin = Number(rail.dataset.origin || "0");
+          var rel = rail.scrollLeft - origin;
+          var wrapped = rel % width;
+          if (wrapped < 0) wrapped += width;
+          if (Math.abs(wrapped - rel) < 0.5) return;
+          wrapping = true;
+          rail.scrollLeft = origin + wrapped;
+          wrapping = false;
+        },
+        { passive: true },
+      );
+
+      new MutationObserver(function () {
+        track.style.removeProperty("--cases-delay");
+        if (!rail.classList.contains("is-paused")) return;
+        rail.classList.remove("is-paused");
+        track.style.removeProperty("animation");
+        track.style.removeProperty("transform");
+        rail.scrollLeft = 0;
+        if (held()) freeze();
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
 
       sync();
     })();
