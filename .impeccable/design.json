@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T13:55:00.000Z",
+  "title": "Design System: Syrian Scholars for Peace and Prosperity",
+  "extensions": {
+    "colorMeta": {
+      "forest-board": {
+        "role": "primary",
+        "displayName": "Forest Board",
+        "canonical": "#002623",
+        "tonalRamp": ["#002623", "#054239", "#428177"]
+      },
+      "survey-green": {
+        "role": "primary",
+        "displayName": "Survey Green",
+        "canonical": "#054239"
+      },
+      "wheat-sheet": {
+        "role": "secondary",
+        "displayName": "Wheat Sheet",
+        "canonical": "#edebe0"
+      },
+      "contour-gold": {
+        "role": "secondary",
+        "displayName": "Contour Gold",
+        "canonical": "#b9a779"
+      },
+      "wheat-ink": {
+        "role": "neutral",
+        "displayName": "Wheat Ink",
+        "canonical": "#988561"
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#161616"
+      },
+      "charcoal-soft": {
+        "role": "neutral",
+        "displayName": "Soft Charcoal",
+        "canonical": "#3d3a3b"
+      },
+      "blocked-umber": {
+        "role": "tertiary",
+        "displayName": "Blocked Umber",
+        "canonical": "#6b1f2a"
+      },
+      "caret-umber": {
+        "role": "tertiary",
+        "displayName": "Caret Umber",
+        "canonical": "#4a151e"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The blocked-parcel statement in English." },
+      "display-ar": { "displayName": "Arabic display", "purpose": "The same statement in Amiri when the document is Arabic." },
+      "headline": { "displayName": "Headline", "purpose": "Reading-room and partnership statements." },
+      "body": { "displayName": "Body", "purpose": "English case prose, max 68ch." },
+      "body-ar": { "displayName": "Arabic body", "purpose": "Arabic case prose." },
+      "label": { "displayName": "Label", "purpose": "Navigation, legend, language, and buttons in both scripts." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "survey-trace",
+        "value": "1.7s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One wheat stroke traces the blocked parcel boundary, then rests. Reduced motion skips it."
+      }
+    ],
+    "breakpoints": [
+      { "name": "stack", "value": "860px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The isolated action, Write an official.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#write\">Write an official</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; min-height: 48px; padding: 0.8rem 1.2rem; background: #054239; color: #edebe0; text-decoration: none; font-family: \"Readex Pro\", sans-serif; font-weight: 600; font-size: 1.0625rem; border-radius: 0; } .ds-btn-primary:hover { background: #002623; color: #edebe0; } .ds-btn-primary:focus-visible { outline: 2px solid #b9a779; outline-offset: 3px; }"
+    },
+    {
+      "name": "Legend chip",
+      "kind": "chip",
+      "refersTo": "legend-chip",
+      "description": "Traces one state of the sheet.",
+      "html": "<label class=\"ds-legend\"><input type=\"radio\" name=\"trace\" checked /> Whole sheet</label>",
+      "css": ".ds-legend { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; padding: 0.4rem 0.85rem; border: 1px solid #b9a779; color: #edebe0; background: #002623; font-family: \"Readex Pro\", sans-serif; font-weight: 500; border-radius: 0; } .ds-legend:has(input:checked) { background: #edebe0; color: #161616; border-color: #edebe0; } .ds-legend:focus-within { outline: 2px solid #b9a779; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Recovery Survey",
+    "overview": "The site is one survey sheet on a forest board. Wheat is the sheet, survey green is lifted ground, and umber is only the block. English prose is Petrona, Arabic prose is Amiri, and chrome in both languages is Readex Pro.",
+    "keyCharacteristics": [
+      "Color marks state.",
+      "Square corners and one-pixel gold seams.",
+      "The primary action sits apart from the other two.",
+      "Arabic is a real right-to-left sheet, not a skin."
+    ],
+    "rules": [
+      {
+        "name": "The State Color Rule",
+        "body": "Umber paints the block and the caret. It is not a button, a link, or a decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Script Rule",
+        "body": "Arabic prose and headings use Amiri and the document direction becomes rtl. Readex Pro stays on chrome.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Sheet Rule",
+        "body": "Depth is a change of field color. Do not add shadows or blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do paint whole regions in Forest Board, Survey Green, Wheat Sheet, and Blocked Umber.",
+      "Do set lang and dir on the document when the language changes."
+    ],
+    "donts": [
+      "Don't use Blocked Umber for buttons or decoration.",
+      "Don't add shadows, rounded cards, or a row of equal proof cards.",
+      "Don't put a small label above a heading."
+    ]
+  }
+}

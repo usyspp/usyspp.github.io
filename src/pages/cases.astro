@@ -1,0 +1,75 @@
+---
+import Base from "../layouts/Base.astro";
+import { cases } from "../data/cases";
+---
+
+<Base
+  descriptionEn="Scholars admitted to U.S. institutions whose visas Presidential Proclamation 10998 still blocks."
+  descriptionAr="باحثون مقبولون في مؤسسات أمريكية وما زال الإعلان الرئاسي 10998 يوقف تأشيراتهم."
+>
+  <main id="case" class="cases-page">
+    <header class="cases-intro">
+      <h1>
+        <span class="en">Cases</span>
+        <span class="ar" lang="ar">الحالات</span>
+      </h1>
+      <p class="prose">
+        <span class="en">
+          Each person is admitted to a U.S. institution. Presidential Proclamation 10998 blocks the visa.
+        </span>
+        <span class="ar" lang="ar">
+          كل شخص مقبول في مؤسسة أمريكية. الإعلان الرئاسي 10998 يمنع التأشيرة.
+        </span>
+      </p>
+    </header>
+    {
+      cases.map((person) => (
+        <article id={person.id} class="case-sheet">
+          <h2>
+            <span class="en">{person.nameEn}</span>
+            <span class="ar" lang="ar">
+              {person.nameAr}
+            </span>
+          </h2>
+          <p class="case-place">
+            <span class="en">{person.fieldEn}</span>
+            <span class="ar" lang="ar">
+              {person.fieldAr}
+            </span>
+            <span class="case-at" lang="en">
+              {person.institution}
+            </span>
+          </p>
+          <p class="prose">
+            <span class="en">{person.bodyEn}</span>
+            <span class="ar" lang="ar">
+              {person.bodyAr}
+            </span>
+          </p>
+        </article>
+      ))
+    }
+    <a class="return" href="/">
+      <span class="en">Return to the case</span>
+      <span class="ar" lang="ar">العودة إلى القضية</span>
+    </a>
+  </main>
+  <script is:inline>
+    (function () {
+      function align() {
+        var id = "";
+        try {
+          id = decodeURIComponent(location.hash.slice(1));
+        } catch (e) {
+          return;
+        }
+        if (!id) return;
+        var el = document.getElementById(id);
+        if (el) el.scrollIntoView();
+      }
+      align();
+      window.addEventListener("load", align);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+    })();
+  </script>
+</Base>

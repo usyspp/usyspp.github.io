@@ -1,0 +1,146 @@
+---
+import "@fontsource/readex-pro/400.css";
+import "@fontsource/readex-pro/500.css";
+import "@fontsource/readex-pro/600.css";
+import "@fontsource/petrona/400.css";
+import "@fontsource/petrona/500.css";
+import "@fontsource/petrona/600.css";
+import "@fontsource/amiri/400.css";
+import "@fontsource/amiri/700.css";
+import "../styles/global.css";
+
+interface Props {
+  descriptionEn: string;
+  descriptionAr: string;
+}
+
+const { descriptionEn, descriptionAr } = Astro.props;
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const links = [
+  { href: "/", en: "Home", ar: "الرئيسية" },
+  { href: "/updates", en: "Updates", ar: "المستجدات" },
+  { href: "/cases", en: "Cases", ar: "الحالات" },
+  { href: "/act", en: "Act", ar: "بادر" },
+];
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#002623" />
+    <title
+      id="doc-title"
+      data-en="Syrian Scholars for Peace and Prosperity"
+      data-ar="باحثون سوريون من أجل السلام والازدهار"
+    >
+      Syrian Scholars for Peace and Prosperity
+    </title>
+    <meta
+      id="doc-desc"
+      name="description"
+      content={descriptionEn}
+      data-en={descriptionEn}
+      data-ar={descriptionAr}
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      (function () {
+        var lang = "en";
+        try {
+          var query = new URLSearchParams(location.search).get("lang");
+          var stored = localStorage.getItem("ssp-lang");
+          if (query === "ar" || query === "en") lang = query;
+          else if (stored === "ar" || stored === "en") lang = stored;
+        } catch (e) {}
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        var title = document.getElementById("doc-title");
+        if (title) title.textContent = title.getAttribute("data-" + lang) || title.textContent;
+        var desc = document.getElementById("doc-desc");
+        if (desc) desc.setAttribute("content", desc.getAttribute("data-" + lang) || "");
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip en" href="#case">Skip to the case</a>
+    <a class="skip ar" lang="ar" href="#case">انتقل إلى القضية</a>
+    <header class="titleblock">
+      <p class="masthead">
+        <span class="en">Syrian Scholars for Peace and Prosperity</span>
+        <span class="ar" lang="ar">باحثون سوريون من أجل السلام والازدهار</span>
+      </p>
+      <div class="title-bar">
+      <nav class="nav" aria-label="Primary" data-label-en="Primary" data-label-ar="التنقل">
+        {
+          links.map((link) => (
+            <a href={link.href} aria-current={current === link.href ? "page" : undefined}>
+              <span class="en">{link.en}</span>
+              <span class="ar" lang="ar">
+                {link.ar}
+              </span>
+            </a>
+          ))
+        }
+      </nav>
+      <div class="title-tools">
+        <button class="lang-switch" type="button" id="lang-switch">
+          <span class="en" lang="ar">العربية</span>
+          <span class="ar">English</span>
+        </button>
+        <a class="action" href="/#write">
+          <span class="en">Write an official</span>
+          <span class="ar" lang="ar">اكتب إلى مسؤول</span>
+        </a>
+      </div>
+      </div>
+    </header>
+    <slot />
+    <footer class="colophon">
+      <p>
+        <span class="en">Syrian Scholars for Peace and Prosperity</span>
+        <span class="ar" lang="ar">باحثون سوريون من أجل السلام والازدهار</span>
+      </p>
+    </footer>
+    <p class="visually-hidden" id="lang-status" aria-live="polite"></p>
+    <script is:inline>
+      (function () {
+        var lang = document.documentElement.lang === "ar" ? "ar" : "en";
+
+        function apply(next, announce) {
+          document.documentElement.lang = next;
+          document.documentElement.dir = next === "ar" ? "rtl" : "ltr";
+          try {
+            localStorage.setItem("ssp-lang", next);
+            var nextUrl = new URL(location.href);
+            nextUrl.searchParams.set("lang", next);
+            history.replaceState(null, "", nextUrl);
+          } catch (e) {}
+          var title = document.getElementById("doc-title");
+          if (title) title.textContent = title.getAttribute("data-" + next) || title.textContent;
+          var desc = document.getElementById("doc-desc");
+          if (desc) desc.setAttribute("content", desc.getAttribute("data-" + next) || "");
+          document.querySelectorAll("[data-label-en]").forEach(function (el) {
+            var label = el.getAttribute("data-label-" + next);
+            if (label) el.setAttribute("aria-label", label);
+          });
+          if (announce) {
+            var status = document.getElementById("lang-status");
+            if (status) status.textContent = next === "ar" ? "العربية" : "English";
+          }
+        }
+
+        var toggle = document.getElementById("lang-switch");
+        if (toggle) {
+          toggle.addEventListener("click", function () {
+            apply(document.documentElement.lang === "ar" ? "en" : "ar", true);
+          });
+        }
+
+        apply(lang, false);
+      })();
+    </script>
+  </body>
+</html>

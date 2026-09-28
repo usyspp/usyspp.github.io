@@ -1,0 +1,220 @@
+---
+import Base from "../layouts/Base.astro";
+import { cases } from "../data/cases";
+
+const descriptionEn =
+  "Syrian scholars admitted to U.S. institutions explain why Presidential Proclamation 10998 should exempt qualified Syrian nationals, and how to write, contact, or join.";
+const descriptionAr =
+  "يشرح باحثون سوريون مقبولون في مؤسسات أمريكية لماذا ينبغي إعفاء السوريين المؤهلين من الإعلان الرئاسي 10998، وكيف تكتب أو تراسل أو تنضم.";
+---
+
+<Base descriptionEn={descriptionEn} descriptionAr={descriptionAr}>
+  <main id="case">
+    <div class="first">
+      <div class="field">
+        <article class="parcel">
+          <svg class="trace" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <rect class="trace-base" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+            <rect class="trace-run" x="1" y="1" width="98" height="98" pathLength="100"></rect>
+          </svg>
+          <div class="parcel-copy">
+            <h1>
+              <span class="en">Presidential Proclamation 10998 blocks our entry.</span>
+              <span class="ar" lang="ar">الإعلان الرئاسي 10998 يمنع دخولنا.</span>
+            </h1>
+            <p class="prose">
+              <span class="en">
+                It categorically blocks the entry and visa issuance of Syrian nationals to the United States.
+                We are students, doctors, engineers, and professionals already admitted to U.S. institutions,
+                most of us on full scholarships, and our academic and professional futures are stalled.
+              </span>
+              <span class="ar" lang="ar">
+                يمنع الإعلان، منعاً قاطعاً، دخول المواطنين السوريين إلى الولايات المتحدة وإصدار التأشيرات لهم.
+                نحن طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية، وأكثرنا بمنح دراسية كاملة،
+                ومستقبلنا الأكاديمي والمهني متوقف.
+              </span>
+            </p>
+          </div>
+        </article>
+        <ol class="timeline">
+          <li>
+            <p>
+              <span class="en"><time datetime="2024-12-08">8 December 2024</time> — fall of the former government</span>
+              <span class="ar" lang="ar"><time datetime="2024-12-08">8 كانون الأول/ديسمبر 2024</time> — سقوط الحكومة السابقة</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span class="en"><time datetime="2025-06-30">30 June 2025</time> — comprehensive U.S. sanctions terminated, in force <time datetime="2025-07-01">1 July 2025</time></span>
+              <span class="ar" lang="ar"><time datetime="2025-06-30">30 حزيران/يونيو 2025</time> — أُنهيت العقوبات الأمريكية الشاملة، وسارية من <time datetime="2025-07-01">1 تموز/يوليو 2025</time></span>
+            </p>
+          </li>
+          <li class="mark">
+            <p>
+              <span class="en"><time datetime="2025-12-16">16 December 2025</time> signed, in force <time datetime="2026-01-01">1 January 2026</time> — Presidential Proclamation 10998 blocks entry</span>
+              <span class="ar" lang="ar">وُقّع في <time datetime="2025-12-16">16 كانون الأول/ديسمبر 2025</time>، وساري من <time datetime="2026-01-01">1 كانون الثاني/يناير 2026</time> — الإعلان الرئاسي 10998 يمنع الدخول</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span class="en"><time datetime="2025-12-18">18 December 2025</time> — Caesar Act repealed</span>
+              <span class="ar" lang="ar"><time datetime="2025-12-18">18 كانون الأول/ديسمبر 2025</time> — أُلغي قانون قيصر</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span class="en"><time datetime="2026-08-24">24 August 2026</time> — Syria’s State Sponsor of Terrorism designation rescinded</span>
+              <span class="ar" lang="ar"><time datetime="2026-08-24">24 آب/أغسطس 2026</time> — أُلغي تصنيف سوريا كدولة راعية للإرهاب</span>
+            </p>
+          </li>
+        </ol>
+      </div>
+      <p class="key">
+        <span class="en">Blocked is dark. Lifted is green.</span>
+        <span class="ar" lang="ar">المنع داكن. ما رُفع أخضر.</span>
+      </p>
+    </div>
+
+    <section class="tape" aria-labelledby="tape-title">
+      <h2 id="tape-title">
+        <span class="en">Admitted, and still waiting.</span>
+        <span class="ar" lang="ar">مقبولون، وما زالوا ينتظرون.</span>
+      </h2>
+      <div class="cases-rail" data-cases>
+        <div class="cases-track">
+          <div class="cases-set">
+            {
+              cases.map((person) => (
+                <a class="case-card" href={`/cases#${person.id}`}>
+                  <div class="case-id">
+                    <h3>
+                      <span class="en">{person.nameEn}</span>
+                      <span class="ar" lang="ar">
+                        {person.nameAr}
+                      </span>
+                    </h3>
+                    <p class="case-place">
+                      <span class="en">{person.fieldEn}</span>
+                      <span class="ar" lang="ar">
+                        {person.fieldAr}
+                      </span>
+                      <span class="case-at" lang="en">
+                        {person.institution}
+                      </span>
+                    </p>
+                  </div>
+                  <p class="case-line">
+                    <span class="en">{person.sentenceEn}</span>
+                    <span class="ar" lang="ar">
+                      {person.sentenceAr}
+                    </span>
+                  </p>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="reading">
+      <section id="change">
+        <h2>
+          <span class="en">The circumstances that necessitated these restrictions no longer exist.</span>
+          <span class="ar" lang="ar">لم تعد الظروف التي اقتضت هذه القيود قائمة.</span>
+        </h2>
+        <p class="prose">
+          <span class="en">
+            Syria is recovering. It no longer constitutes a security threat to anyone and is actively
+            transitioning into a center for regional peace, development, and prosperity.
+          </span>
+          <span class="ar" lang="ar">
+            سوريا تتعافى. لم تعد تشكل تهديداً أمنياً لأحد، وهي تنتقل بفاعلية لتصبح مركزاً للسلام والتنمية
+            والازدهار في المنطقة.
+          </span>
+        </p>
+        <p class="mission" id="mission">
+          <span class="en">We will study in the United States, then return to rebuild Syria.</span>
+          <span class="ar" lang="ar">سندرس في الولايات المتحدة، ثم نعود لإعادة إعمار سوريا.</span>
+        </p>
+      </section>
+    </div>
+
+    <section class="station" id="write" aria-label="Act" data-label-en="Act" data-label-ar="بادر">
+      <a class="action" href="/act#write">
+        <span class="en">Write an official</span>
+        <span class="ar" lang="ar">اكتب إلى مسؤول</span>
+      </a>
+      <a class="action" href="/act#contact">
+        <span class="en">Contact</span>
+        <span class="ar" lang="ar">راسل</span>
+      </a>
+      <a class="action" href="/act#join">
+        <span class="en">Join</span>
+        <span class="ar" lang="ar">انضم</span>
+      </a>
+    </section>
+  </main>
+  <script is:inline>
+    (function () {
+      var rail = document.querySelector("[data-cases]");
+      if (!rail) return;
+      var track = rail.querySelector(".cases-track");
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var seen = true;
+
+      function clearClones() {
+        track.querySelectorAll("[data-clone]").forEach(function (node) {
+          node.remove();
+        });
+      }
+
+      function sync() {
+        rail.classList.toggle("is-quiet", document.hidden || !seen);
+        if (reduce.matches) {
+          clearClones();
+          rail.classList.remove("is-live");
+          return;
+        }
+        if (!track.querySelector("[data-clone]")) {
+          var set = track.querySelector(".cases-set");
+          if (!set) return;
+          var clone = set.cloneNode(true);
+          clone.setAttribute("data-clone", "");
+          clone.setAttribute("aria-hidden", "true");
+          clone.querySelectorAll("a").forEach(function (link) {
+            link.tabIndex = -1;
+          });
+          track.appendChild(clone);
+        }
+        rail.classList.add("is-live");
+      }
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            seen = entries.some(function (entry) {
+              return entry.isIntersecting;
+            });
+            sync();
+          },
+          { threshold: 0.2 },
+        );
+        observer.observe(rail);
+      }
+
+      document.addEventListener("visibilitychange", sync);
+      if (typeof reduce.addEventListener === "function") reduce.addEventListener("change", sync);
+
+      var zone = rail.closest(".tape") || rail;
+      zone.addEventListener("pointerenter", function () {
+        rail.classList.add("is-held");
+      });
+      zone.addEventListener("pointerleave", function () {
+        rail.classList.remove("is-held");
+      });
+
+      sync();
+    })();
+  </script>
+</Base>
