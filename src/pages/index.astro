@@ -269,10 +269,15 @@ const descriptionAr =
         return pointerInside || focusInside || dragging;
       }
 
-      function pointerInRail(event) {
-        if (!event || typeof event.clientX !== "number") return pointerInside;
-        var box = rail.getBoundingClientRect();
-        return event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
+      function overCard(event) {
+        if (!event) return false;
+        var node = event.target && event.target.closest ? event.target.closest(".case-card") : null;
+        if (node && rail.contains(node)) return true;
+        if (typeof event.clientX !== "number") return false;
+        var hit = document.elementFromPoint(event.clientX, event.clientY);
+        if (!hit || !hit.closest) return false;
+        var card = hit.closest(".case-card");
+        return !!(card && rail.contains(card));
       }
 
       function freeze() {
@@ -355,21 +360,18 @@ const descriptionAr =
       if (typeof reduce.addEventListener === "function") listen(reduce, "change", sync);
 
       function syncHover(event) {
-        pointerInside = pointerInRail(event);
         if (dragging && event.pointerType === "mouse") {
           var dx = event.clientX - startX;
           if (Math.abs(dx) > 6) dragMoved = true;
           rail.scrollLeft = startScroll + dx / scrollPerPx;
           return;
         }
+        pointerInside = overCard(event);
         if (pointerInside) freeze();
         else if (!dragging) release();
       }
 
-      listen(rail, "pointerenter", function () {
-        pointerInside = true;
-        freeze();
-      });
+      listen(rail, "pointerenter", syncHover);
       listen(rail, "pointerleave", function () {
         pointerInside = false;
         if (!dragging) release();
@@ -387,11 +389,14 @@ const descriptionAr =
       });
 
       listen(rail, "pointerdown", function (event) {
+        var onCard = overCard(event);
         if (event.pointerType !== "mouse" || event.button !== 0) {
+          if (!onCard) return;
           pointerInside = true;
           freeze();
           return;
         }
+        if (!onCard && !rail.classList.contains("is-paused")) return;
         if (!reduce.matches && !rail.classList.contains("is-paused")) freeze();
         if (!reduce.matches && !rail.classList.contains("is-paused")) return;
         var card = marker();
@@ -412,7 +417,7 @@ const descriptionAr =
         if (!dragging) return;
         dragging = false;
         rail.classList.remove("is-dragging");
-        pointerInside = pointerInRail(event);
+        pointerInside = overCard(event);
         focusInside = keyboardFocusInside();
         if (dragMoved) {
           listen(

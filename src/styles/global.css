@@ -363,6 +363,7 @@ html[dir="rtl"] .masthead {
   width: 100%;
   max-width: 40rem;
   padding: clamp(1.5rem, 4vw, 3.25rem);
+  container-type: inline-size;
 }
 
 .parcel h1 {
@@ -375,6 +376,25 @@ html[dir="rtl"] .masthead {
   color: var(--wheat);
   max-width: 38ch;
   text-wrap: pretty;
+}
+
+/* Step the measure down so a narrow column does not leave a one- or two-word last line. */
+@container (max-width: 26.9375rem) {
+  .parcel .prose {
+    max-width: 22.25rem;
+  }
+}
+
+@container (max-width: 21.5rem) {
+  .parcel .prose {
+    max-width: 19.25rem;
+  }
+}
+
+@container (max-width: 18.625rem) {
+  .parcel .prose {
+    max-width: 16rem;
+  }
 }
 
 .trace {
@@ -464,7 +484,7 @@ html[dir="rtl"] .timeline p {
 
 @media (min-width: 1200px) {
   .field {
-    grid-template-columns: minmax(37.5rem, 1fr) minmax(0, 1.35fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
   }
 
   .timeline li {
