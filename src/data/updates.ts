@@ -50,4 +50,55 @@ export const updates: UpdatePost[] = [
       altAr: "لوحة نائبة لهذه المذكرة.",
     },
   },
+  {
+    id: "2025-12-18-caesar",
+    date: "2025-12-18",
+    dateEn: "18 December 2025",
+    dateAr: "18 كانون الأول/ديسمبر 2025",
+    titleEn: "Caesar Act repealed",
+    titleAr: "أُلغي قانون قيصر",
+    bodyEn:
+      "On this date the Caesar Act was repealed. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions.",
+    bodyAr:
+      "في هذا التاريخ أُلغي قانون قيصر. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية.",
+    image: {
+      src: "/placeholders/caesar.svg",
+      altEn: "Placeholder plate for this note.",
+      altAr: "لوحة نائبة لهذه المذكرة.",
+    },
+  },
+  {
+    id: "2025-06-30-sanctions",
+    date: "2025-06-30",
+    dateEn: "30 June 2025",
+    dateAr: "30 حزيران/يونيو 2025",
+    titleEn: "U.S. sanctions terminated",
+    titleAr: "أُنهيت العقوبات الأمريكية",
+    bodyEn:
+      "On this date U.S. sanctions were terminated. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions.",
+    bodyAr:
+      "في هذا التاريخ أُنهيت العقوبات الأمريكية. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية.",
+    image: {
+      src: "/placeholders/sanctions.svg",
+      altEn: "Placeholder plate for this note.",
+      altAr: "لوحة نائبة لهذه المذكرة.",
+    },
+  },
+  {
+    id: "2024-12-08-liberation",
+    date: "2024-12-08",
+    dateEn: "8 December 2024",
+    dateAr: "8 كانون الأول/ديسمبر 2024",
+    titleEn: "The liberation of Syria",
+    titleAr: "تحرير سوريا",
+    bodyEn:
+      "On this date, the liberation of Syria. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions. The aim is unchanged: study in the United States, then return to rebuild Syria.",
+    bodyAr:
+      "في هذا التاريخ، تحرير سوريا. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
+    image: {
+      src: "/placeholders/liberation.svg",
+      altEn: "Placeholder plate for this note.",
+      altAr: "لوحة نائبة لهذه المذكرة.",
+    },
+  },
 ];

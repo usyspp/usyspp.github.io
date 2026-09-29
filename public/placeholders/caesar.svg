@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Placeholder">
+  <rect width="640" height="420" fill="#161616"/>
+  <rect x="48" y="48" width="544" height="300" fill="none" stroke="#b9a779" stroke-width="1"/>
+  <rect x="48" y="188" width="544" height="10" fill="#6b1f2a"/>
+  <text x="48" y="392" fill="#edebe0" font-family="Readex Pro, Geeza Pro, sans-serif" font-size="15" font-weight="600" letter-spacing="3.6">PLACEHOLDER</text>
+</svg>
