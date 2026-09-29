@@ -472,9 +472,9 @@ html[dir="rtl"] .timeline p {
   }
 }
 
-@container (min-width: 32.8rem) {
+@container (min-width: 34rem) {
   .timeline p {
-    font-size: calc(100cqi * 0.0305);
+    font-size: 1.0625rem;
     white-space: nowrap;
   }
 }
