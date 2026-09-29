@@ -89,12 +89,12 @@ export const updates: UpdatePost[] = [
     date: "2024-12-08",
     dateEn: "8 December 2024",
     dateAr: "8 كانون الأول/ديسمبر 2024",
-    titleEn: "The liberation of Syria",
+    titleEn: "Syria’s liberation",
     titleAr: "تحرير سوريا",
     bodyEn:
-      "On this date, the liberation of Syria. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions. The aim is unchanged: study in the United States, then return to rebuild Syria.",
+      "On this date came Syria’s liberation. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions. The aim is unchanged: study in the United States, then return to rebuild Syria.",
     bodyAr:
-      "في هذا التاريخ، تحرير سوريا. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
+      "في هذا التاريخ كان تحرير سوريا. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
     image: {
       src: "/placeholders/liberation.svg",
       altEn: "Placeholder plate for this note.",
