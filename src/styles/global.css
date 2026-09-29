@@ -927,6 +927,12 @@ html[dir="rtl"] .update-plate.ar {
   transition: none;
 }
 
+.act-board,
+.act-stage,
+.act-jobs {
+  overflow-anchor: none;
+}
+
 .act-board.act-ready .act-stage {
   overflow: hidden;
 }
@@ -964,6 +970,18 @@ html[dir="rtl"] .update-plate.ar {
   stroke: var(--forest);
   animation: none;
   stroke-dashoffset: 0;
+}
+
+#write .trace-run {
+  stroke: var(--umber-bright);
+}
+
+#contact .trace-run {
+  stroke: var(--forest);
+}
+
+#join .trace-run {
+  stroke: var(--ink);
 }
 
 .act-pane.is-current .trace-run {

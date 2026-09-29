@@ -353,38 +353,57 @@ const joinConnected = joinId.length > 0;
         });
       }
 
-      function revealJob() {
-        var list = document.querySelector(".act-jobs");
-        var panel = document.getElementById(jobName);
-        if (!list || !panel) return;
-        window.scrollTo(0, 0);
-        if (panel.id === "write") return;
-        var action = panel.querySelector(".action");
-        if (!action) return;
-        var extra = action.getBoundingClientRect().bottom - (window.innerHeight - 16);
-        if (extra <= 0) return;
-        var stacked = window.matchMedia("(max-width: 860px)").matches;
-        if (!stacked) {
-          window.scrollBy(0, extra);
-          return;
-        }
-        var maxLift = list.getBoundingClientRect().top - 12;
-        var lift = Math.min(extra, Math.max(0, maxLift));
-        if (lift > 0) window.scrollBy(0, lift);
+      function holdScroll(run) {
+        var x = window.scrollX;
+        var y = window.scrollY;
+        run();
+        if (window.scrollX !== x || window.scrollY !== y) window.scrollTo(x, y);
+      }
+
+      var lockingStage = false;
+
+      function lockStage() {
+        if (lockingStage) return;
+        var stage = document.querySelector(".act-stage");
+        if (!stage || !document.querySelector(".act-board.act-ready")) return;
+        lockingStage = true;
+        var max = 0;
+        jobs.forEach(function (job) {
+          var pane = document.getElementById(job);
+          if (!pane) return;
+          var wasHidden = pane.hidden;
+          if (wasHidden) {
+            pane.removeAttribute("hidden");
+            pane.style.visibility = "hidden";
+          }
+          max = Math.max(max, pane.offsetHeight);
+          if (wasHidden) {
+            pane.setAttribute("hidden", "");
+            pane.style.visibility = "";
+          }
+        });
+        if (max) stage.style.minHeight = max + "px";
+        lockingStage = false;
       }
 
       function openJob(name, updateHash) {
         if (jobs.indexOf(name) < 0) name = "write";
-        showJob(name);
-        if (updateHash && location.hash !== "#" + name) {
-          var next = location.pathname + location.search + "#" + name;
-          history.replaceState(history.state, "", next);
-        }
-        revealJob();
+        holdScroll(function () {
+          showJob(name);
+          lockStage();
+          if (updateHash && location.hash !== "#" + name) {
+            var next = location.pathname + location.search + "#" + name;
+            history.replaceState(history.state, "", next);
+          }
+        });
       }
 
       document.querySelectorAll(".act-jobs [role='tab']").forEach(function (tab) {
+        tab.addEventListener("mousedown", function (event) {
+          event.preventDefault();
+        });
         tab.addEventListener("click", function () {
+          tab.focus({ preventScroll: true });
           openJob(tab.getAttribute("aria-controls") || "write", true);
         });
       });
@@ -404,7 +423,7 @@ const joinConnected = joinId.length > 0;
           else return;
           event.preventDefault();
           next = (next + tabs.length) % tabs.length;
-          tabs[next].focus();
+          tabs[next].focus({ preventScroll: true });
           tabs[next].click();
         });
       }
@@ -413,11 +432,10 @@ const joinConnected = joinId.length > 0;
         window.__sspActHash = true;
         window.addEventListener("hashchange", function () {
           if (!document.getElementById("tab-write")) return;
-          showJob(jobFromHash());
-          setTimeout(revealJob, 0);
-        });
-        window.addEventListener("load", function () {
-          setTimeout(revealJob, 0);
+          holdScroll(function () {
+            showJob(jobFromHash());
+            lockStage();
+          });
         });
         document.addEventListener(
           "click",
@@ -446,6 +464,7 @@ const joinConnected = joinId.length > 0;
       }
 
       openJob(jobFromHash(), false);
+      lockStage();
 
       function lang() {
         return document.documentElement.lang === "ar" ? "ar" : "en";
@@ -684,6 +703,7 @@ const joinConnected = joinId.length > 0;
           if (entry.target.id !== jobName) return;
           var next = entry.target.offsetHeight + "px";
           if (stage.style.height !== next) stage.style.height = next;
+          lockStage();
         });
       });
       jobs.forEach(function (job) {
