@@ -563,8 +563,25 @@ html[dir="rtl"] .timeline p {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--wheat-deep);
-  background: var(--wheat);
+  padding: 0.55rem;
+  border: 1px solid var(--forest);
+  background-color: var(--wheat);
+  background-image:
+    linear-gradient(var(--forest), var(--forest)),
+    linear-gradient(var(--forest), var(--forest)),
+    linear-gradient(var(--forest), var(--forest)),
+    linear-gradient(var(--forest), var(--forest));
+  background-repeat: no-repeat;
+  background-size:
+    calc(100% - 0.7rem) 1px,
+    calc(100% - 0.7rem) 1px,
+    1px calc(100% - 0.7rem),
+    1px calc(100% - 0.7rem);
+  background-position:
+    center 0.28rem,
+    center calc(100% - 0.28rem),
+    0.28rem center,
+    calc(100% - 0.28rem) center;
 }
 
 .plate.ar {
