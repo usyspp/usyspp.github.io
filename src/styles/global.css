@@ -466,11 +466,15 @@ html[dir="rtl"] .timeline p {
   .field {
     grid-template-columns: minmax(37.5rem, 1fr) minmax(0, 1.35fr);
   }
+
+  .timeline li {
+    padding-inline: 0.7rem;
+  }
 }
 
-@container (min-width: 34.25rem) {
+@container (min-width: 32.8rem) {
   .timeline p {
-    font-size: calc(100cqi * 0.0292);
+    font-size: calc(100cqi * 0.0305);
     white-space: nowrap;
   }
 }

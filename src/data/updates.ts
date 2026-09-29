@@ -19,8 +19,8 @@ export const updates: UpdatePost[] = [
   {
     id: "2026-08-24-designation",
     date: "2026-08-24",
-    dateEn: "24 August 2026",
-    dateAr: "24 آب/أغسطس 2026",
+    dateEn: "August 2026",
+    dateAr: "آب/أغسطس 2026",
     titleEn: "State Sponsor of Terrorism designation rescinded",
     titleAr: "أُلغي تصنيف الدولة الراعية للإرهاب",
     bodyEn:
@@ -36,14 +36,14 @@ export const updates: UpdatePost[] = [
   {
     id: "2026-01-01-proclamation",
     date: "2026-01-01",
-    dateEn: "1 January 2026",
-    dateAr: "1 كانون الثاني/يناير 2026",
+    dateEn: "January 2026",
+    dateAr: "كانون الثاني/يناير 2026",
     titleEn: "Presidential Proclamation 10998 blocks entry",
     titleAr: "الإعلان الرئاسي 10998 يمنع الدخول",
     bodyEn:
-      "On this date Presidential Proclamation 10998 blocks entry. U.S. sanctions were terminated on 30 June 2025, and the Caesar Act was repealed on 18 December 2025. The block on entry remains. The aim is unchanged: study in the United States, then return to rebuild Syria.",
+      "On this date Presidential Proclamation 10998 blocks entry. U.S. sanctions were terminated in June 2025, and the Caesar Act was repealed in December 2025. The block on entry remains. The aim is unchanged: study in the United States, then return to rebuild Syria.",
     bodyAr:
-      "في هذا التاريخ يمنع الإعلان الرئاسي 10998 الدخول. أُنهيت العقوبات الأمريكية في 30 حزيران/يونيو 2025، وأُلغي قانون قيصر في 18 كانون الأول/ديسمبر 2025. ما زال المنع قائماً. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
+      "في هذا التاريخ يمنع الإعلان الرئاسي 10998 الدخول. أُنهيت العقوبات الأمريكية في حزيران/يونيو 2025، وأُلغي قانون قيصر في كانون الأول/ديسمبر 2025. ما زال المنع قائماً. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
     image: {
       src: "/placeholders/proclamation.svg",
       altEn: "Placeholder plate for this note.",
@@ -53,8 +53,8 @@ export const updates: UpdatePost[] = [
   {
     id: "2025-12-18-caesar",
     date: "2025-12-18",
-    dateEn: "18 December 2025",
-    dateAr: "18 كانون الأول/ديسمبر 2025",
+    dateEn: "December 2025",
+    dateAr: "كانون الأول/ديسمبر 2025",
     titleEn: "Caesar Act repealed",
     titleAr: "أُلغي قانون قيصر",
     bodyEn:
@@ -70,8 +70,8 @@ export const updates: UpdatePost[] = [
   {
     id: "2025-06-30-sanctions",
     date: "2025-06-30",
-    dateEn: "30 June 2025",
-    dateAr: "30 حزيران/يونيو 2025",
+    dateEn: "June 2025",
+    dateAr: "حزيران/يونيو 2025",
     titleEn: "U.S. sanctions terminated",
     titleAr: "أُنهيت العقوبات الأمريكية",
     bodyEn:
@@ -87,8 +87,8 @@ export const updates: UpdatePost[] = [
   {
     id: "2024-12-08-liberation",
     date: "2024-12-08",
-    dateEn: "8 December 2024",
-    dateAr: "8 كانون الأول/ديسمبر 2024",
+    dateEn: "December 2024",
+    dateAr: "كانون الأول/ديسمبر 2024",
     titleEn: "Syria’s liberation",
     titleAr: "تحرير سوريا",
     bodyEn:
