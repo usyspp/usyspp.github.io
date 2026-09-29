@@ -208,6 +208,10 @@ p {
   font-weight: 400;
 }
 
+.phrase {
+  white-space: nowrap;
+}
+
 html[dir="rtl"] .prose {
   font-family: var(--naskh);
   font-size: 1.35rem;
