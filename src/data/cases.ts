@@ -15,7 +15,7 @@ export const cases: ScholarCase[] = [
   {
     id: "faisal-durbaa",
     nameEn: "Faisal Durbaa",
-    nameAr: "فيصل دربعة",
+    nameAr: "فيصل درباع",
     fieldEn: "Computer science",
     fieldAr: "علوم الحاسوب",
     institution: "Harvard",
@@ -31,7 +31,7 @@ export const cases: ScholarCase[] = [
   {
     id: "yamen-alhilawi",
     nameEn: "Yamen Alhilawi",
-    nameAr: "يمان الحلاوي",
+    nameAr: "يامن الحيلاوي",
     fieldEn: "Financial economics and politics",
     fieldAr: "الاقتصاد المالي والعلوم السياسية",
     institution: "Columbia",
@@ -95,7 +95,7 @@ export const cases: ScholarCase[] = [
   {
     id: "abdulla-daher",
     nameEn: "Abdulla Daher",
-    nameAr: "عبدالله ظاهر",
+    nameAr: "عبدالله ضاهر",
     fieldEn: "Medicine",
     fieldAr: "الطب",
     institution: "Washington University in St. Louis",
@@ -127,7 +127,7 @@ export const cases: ScholarCase[] = [
   {
     id: "ousama-shikfa",
     nameEn: "Ousama Shikfa",
-    nameAr: "أسامة شكفة",
+    nameAr: "أسامة شقفة",
     fieldEn: "Ophthalmology research",
     fieldAr: "أبحاث طب العيون",
     institution: "University of Illinois Chicago",
@@ -159,7 +159,7 @@ export const cases: ScholarCase[] = [
   {
     id: "yamen-shayah",
     nameEn: "Yamen Shayah",
-    nameAr: "يمان شيّاح",
+    nameAr: "يامن شياح",
     fieldEn: "Postgraduate medical training",
     fieldAr: "التدريب الطبي بعد التخرج",
     institution: "Wright Center for Graduate Medical Education",
