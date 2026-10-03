@@ -41,31 +41,31 @@ const descriptionAr =
           <li>
             <p>
               <span class="en"><time datetime="2024-12-08">December 2024</time> — Syria’s liberation</span>
-              <span class="ar" lang="ar"><time datetime="2024-12-08">كانون الأول/ديسمبر 2024</time> — تحرير سوريا</span>
+              <span class="ar" lang="ar"><time datetime="2024-12-08">كانون الأول 2024</time> — تحرير سوريا</span>
             </p>
           </li>
           <li>
             <p>
               <span class="en"><time datetime="2025-06-30">June 2025</time> — U.S. sanctions terminated</span>
-              <span class="ar" lang="ar"><time datetime="2025-06-30">حزيران/يونيو 2025</time> — أُنهيت العقوبات الأمريكية</span>
+              <span class="ar" lang="ar"><time datetime="2025-06-30">حزيران 2025</time> — أُنهيت العقوبات الأمريكية</span>
             </p>
           </li>
           <li>
             <p>
               <span class="en"><time datetime="2025-12-18">December 2025</time> — Caesar Act repealed</span>
-              <span class="ar" lang="ar"><time datetime="2025-12-18">كانون الأول/ديسمبر 2025</time> — أُلغي قانون قيصر</span>
+              <span class="ar" lang="ar"><time datetime="2025-12-18">كانون الأول 2025</time> — أُلغي قانون قيصر</span>
             </p>
           </li>
           <li class="mark">
             <p>
               <span class="en"><time datetime="2026-01-01">January 2026</time> — Presidential Proclamation 10998 blocks entry</span>
-              <span class="ar" lang="ar"><time datetime="2026-01-01">كانون الثاني/يناير 2026</time> — الإعلان الرئاسي 10998 يمنع الدخول</span>
+              <span class="ar" lang="ar"><time datetime="2026-01-01">كانون الثاني 2026</time> — الإعلان الرئاسي 10998 يمنع الدخول</span>
             </p>
           </li>
           <li>
             <p>
               <span class="en"><time datetime="2026-08-24">August 2026</time> — State Sponsor of Terrorism designation rescinded</span>
-              <span class="ar" lang="ar"><time datetime="2026-08-24">آب/أغسطس 2026</time> — أُلغي تصنيف الدولة الراعية للإرهاب</span>
+              <span class="ar" lang="ar"><time datetime="2026-08-24">آب 2026</time> — أُلغي تصنيف الدولة الراعية للإرهاب</span>
             </p>
           </li>
         </ol>
@@ -226,6 +226,8 @@ const descriptionAr =
       var startScroll = 0;
       var scrollPerPx = -1;
       var wrapping = false;
+      var scrollLock = 0;
+      var scrollNegative = false;
 
       function clearClones() {
         track.querySelectorAll("[data-clone]").forEach(function (node) {
@@ -253,11 +255,53 @@ const descriptionAr =
       function measurePerPx(card) {
         var origin = rail.scrollLeft;
         var before = card.getBoundingClientRect().left;
-        rail.scrollLeft = origin + 12;
-        var after = card.getBoundingClientRect().left;
+        var deltas = [12, -12];
+        for (var i = 0; i < deltas.length; i++) {
+          rail.scrollLeft = origin + deltas[i];
+          var got = rail.scrollLeft;
+          if (Math.abs(got - origin) < 0.5) continue;
+          var after = card.getBoundingClientRect().left;
+          rail.scrollLeft = origin;
+          var per = (after - before) / (got - origin);
+          if (Math.abs(per) > 0.01) return per;
+        }
         rail.scrollLeft = origin;
-        var per = (after - before) / 12;
-        return Math.abs(per) > 0.01 ? per : -1;
+        return -1;
+      }
+
+      function noteScrollModel() {
+        var saved = rail.scrollLeft;
+        rail.scrollLeft = -1e7;
+        scrollNegative = rail.scrollLeft < -0.5;
+        rail.scrollLeft = saved;
+      }
+
+      function scrollLimits() {
+        var max = Math.max(0, rail.scrollWidth - rail.clientWidth);
+        return scrollNegative ? { low: -max, high: 0 } : { low: 0, high: max };
+      }
+
+      function loopedScroll(value) {
+        var width = loopWidth();
+        var limits = scrollLimits();
+        if (!(width > 8)) return value;
+        var guard = 0;
+        while (value > limits.high + 0.5 && guard < 8) {
+          value -= width;
+          guard++;
+        }
+        while (value < limits.low - 0.5 && guard < 16) {
+          value += width;
+          guard++;
+        }
+        return value;
+      }
+
+      function holdScrollLock() {
+        scrollLock++;
+        requestAnimationFrame(function () {
+          scrollLock--;
+        });
       }
 
       function keyboardFocusInside() {
@@ -285,12 +329,14 @@ const descriptionAr =
         var card = marker();
         if (!card) return;
         var before = card.getBoundingClientRect().left;
+        holdScrollLock();
         rail.classList.add("is-paused");
         track.style.animation = "none";
         track.style.transform = "none";
         void track.offsetWidth;
         var origin = rail.scrollLeft;
         rail.dataset.origin = String(origin);
+        noteScrollModel();
         var after = card.getBoundingClientRect().left;
         var per = measurePerPx(card);
         scrollPerPx = per;
@@ -363,7 +409,7 @@ const descriptionAr =
         if (dragging && event.pointerType === "mouse") {
           var dx = event.clientX - startX;
           if (Math.abs(dx) > 6) dragMoved = true;
-          rail.scrollLeft = startScroll + dx / scrollPerPx;
+          rail.scrollLeft = loopedScroll(startScroll + dx / scrollPerPx);
           return;
         }
         pointerInside = overCard(event);
@@ -442,16 +488,24 @@ const descriptionAr =
         rail,
         "scroll",
         function () {
-          if (wrapping || reduce.matches || !rail.classList.contains("is-paused")) return;
+          if (scrollLock || wrapping || reduce.matches || !rail.classList.contains("is-paused")) return;
           var width = loopWidth();
           if (width < 8) return;
           var origin = Number(rail.dataset.origin || "0");
           var rel = rail.scrollLeft - origin;
           var wrapped = rel % width;
           if (wrapped < 0) wrapped += width;
-          if (Math.abs(wrapped - rel) < 0.5) return;
+          var limits = scrollLimits();
+          var candidates = [origin + wrapped, origin + wrapped - width];
+          var chosen = null;
+          for (var i = 0; i < candidates.length; i++) {
+            var value = candidates[i];
+            if (value < limits.low - 0.5 || value > limits.high + 0.5) continue;
+            if (chosen === null || Math.abs(value - rail.scrollLeft) < Math.abs(chosen - rail.scrollLeft)) chosen = value;
+          }
+          if (chosen === null || Math.abs(chosen - rail.scrollLeft) < 0.5) return;
           wrapping = true;
-          rail.scrollLeft = origin + wrapped;
+          rail.scrollLeft = chosen;
           wrapping = false;
         },
         { passive: true },

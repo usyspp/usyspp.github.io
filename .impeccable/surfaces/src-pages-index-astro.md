@@ -15,7 +15,7 @@ Audience: Americans and Syrians who arrive from a shared link and need the case 
 
 THESIS: The home page is one survey sheet of the case, the blocked parcel beside what 2025 and 2026 already lifted. It refuses the nonprofit hero with three proof cards, and it refuses the protest poster.
 
-OWN-WORLD: A forest board (#002623, #054239) carries a wheat sheet (#edebe0, #b9a779, #988561). Charcoal (#161616, #3d3a3b) is ink. Deep umber (#260f14, #4a151e, #6b1f2a) fills the PP10998 parcel and the one proclamation mark. Chrome is Readex Pro, English prose is Petrona, Arabic prose is Amiri. The parts are a title block, a parcel, a dated timeline, one color line, a cases tape, and three action buttons.
+OWN-WORLD: A forest board (#002623, #054239) carries a wheat sheet (#edebe0, #b9a779, #988561). Charcoal (#161616, #3d3a3b) is ink. Deep umber (#260f14, #4a151e, #6b1f2a) fills the PP10998 parcel and the one proclamation mark. Chrome is Readex Pro, English prose is Petrona, Arabic prose is Noto Naskh Arabic. The parts are a title block, a parcel, a dated timeline, one color line, a cases tape, and three action buttons.
 
 STORY: The visitor learns that admitted Syrian scholars are blocked by PP10998, that the Caesar Act, U.S. sanctions, and the State Sponsor of Terrorism designation have been lifted, and that the coalition will study in the United States and return to rebuild Syria. They leave through Contact, Join, or Write. Arabic matches the English substance, and the language switch flips this page to RTL.
 
