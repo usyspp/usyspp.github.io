@@ -281,6 +281,22 @@ const descriptionAr =
         return scrollNegative ? { low: -max, high: 0 } : { low: 0, high: max };
       }
 
+      function loopedScroll(value) {
+        var width = loopWidth();
+        var limits = scrollLimits();
+        if (!(width > 8)) return value;
+        var guard = 0;
+        while (value > limits.high + 0.5 && guard < 8) {
+          value -= width;
+          guard++;
+        }
+        while (value < limits.low - 0.5 && guard < 16) {
+          value += width;
+          guard++;
+        }
+        return value;
+      }
+
       function holdScrollLock() {
         scrollLock++;
         requestAnimationFrame(function () {
@@ -393,7 +409,7 @@ const descriptionAr =
         if (dragging && event.pointerType === "mouse") {
           var dx = event.clientX - startX;
           if (Math.abs(dx) > 6) dragMoved = true;
-          rail.scrollLeft = startScroll + dx / scrollPerPx;
+          rail.scrollLeft = loopedScroll(startScroll + dx / scrollPerPx);
           return;
         }
         pointerInside = overCard(event);
