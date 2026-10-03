@@ -53,7 +53,7 @@
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "The blocked-parcel statement in English." },
-      "display-ar": { "displayName": "Arabic display", "purpose": "The same statement in Amiri when the document is Arabic." },
+      "display-ar": { "displayName": "Arabic display", "purpose": "The same statement in Noto Naskh Arabic when the document is Arabic." },
       "headline": { "displayName": "Headline", "purpose": "Reading-room and partnership statements." },
       "body": { "displayName": "Body", "purpose": "English case prose, max 68ch." },
       "body-ar": { "displayName": "Arabic body", "purpose": "Arabic case prose." },
@@ -91,7 +91,7 @@
   ],
   "narrative": {
     "northStar": "The Recovery Survey",
-    "overview": "The site is one survey sheet on a forest board. Wheat is the sheet, survey green is lifted ground, and umber is only the block. English prose is Petrona, Arabic prose is Amiri, and chrome in both languages is Readex Pro.",
+    "overview": "The site is one survey sheet on a forest board. Wheat is the sheet, survey green is lifted ground, and umber is only the block. English prose is Petrona, Arabic prose is Noto Naskh Arabic, and chrome in both languages is Readex Pro.",
     "keyCharacteristics": [
       "Color marks state.",
       "Square corners and one-pixel gold seams.",
@@ -106,7 +106,7 @@
       },
       {
         "name": "The Script Rule",
-        "body": "Arabic prose and headings use Amiri and the document direction becomes rtl. Readex Pro stays on chrome.",
+        "body": "Arabic prose and headings use Noto Naskh Arabic and the document direction becomes rtl. Readex Pro stays on chrome.",
         "section": "typography"
       },
       {

@@ -19,7 +19,7 @@ typography:
     lineHeight: 1.08
     letterSpacing: "-0.03em"
   display-ar:
-    fontFamily: "Amiri, Noto Naskh Arabic, serif"
+    fontFamily: "Noto Naskh Arabic, serif"
     fontSize: "clamp(2.45rem, 4.5vw, 4.5rem)"
     fontWeight: 700
     lineHeight: 1.35
@@ -36,7 +36,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.55
   body-ar:
-    fontFamily: "Amiri, Noto Naskh Arabic, serif"
+    fontFamily: "Noto Naskh Arabic, serif"
     fontSize: "1.35rem"
     fontWeight: 400
     lineHeight: 1.9
@@ -87,7 +87,7 @@ components:
 
 **Creative North Star: "The Recovery Survey"**
 
-The site is one survey sheet on a forest board. A wheat title block carries the coalition’s name and the way out. The case is drawn as parcels: umber for what Presidential Proclamation 10998 still blocks, survey green for what 2025 and 2026 already lifted. English prose is Petrona. Arabic prose is Amiri. Chrome in both languages is Readex Pro. The sheet flips to real right-to-left on the same page.
+The site is one survey sheet on a forest board. A wheat title block carries the coalition’s name and the way out. The case is drawn as parcels: umber for what Presidential Proclamation 10998 still blocks, survey green for what 2025 and 2026 already lifted. English prose is Petrona. Arabic prose is Noto Naskh Arabic. Chrome in both languages is Readex Pro. The sheet flips to real right-to-left on the same page.
 
 Density changes on purpose. The first screen is two fields, only as tall as the claim and the timeline. A wheat tape of cases crosses the forest board and advances on its own. The reading room is one wheat sheet: why the restrictions no longer hold, beside a handshake plate, and one mission sentence beside a plate of the two flags. The close is three buttons on survey green: write, contact, and join.
 
@@ -130,22 +130,22 @@ The palette is the four committed families, used as fields rather than tints.
 ## Typography
 
 **Display and English body:** Petrona, with Iowan Old Style and Palatino behind it.
-**Arabic display and body:** Amiri, with Noto Naskh Arabic behind it.
+**Arabic display and body:** Noto Naskh Arabic.
 **Labels, navigation, and buttons:** Readex Pro, which covers Arabic and Latin.
 
-**Character:** The case reads as a written brief. The sheet’s controls read as survey lettering. Arabic headings take Amiri’s heavier cut because that face has no middle weight.
+**Character:** The case reads as a written brief. The sheet’s controls read as survey lettering. Arabic headings use the 700 cut of Noto Naskh Arabic.
 
 ### Hierarchy
 
-- **Display** (Petrona 500, clamp(2.45rem, 4.5vw, 4.5rem), line-height 1.08, tracking -0.03em): The blocked-parcel statement. Arabic uses Amiri 700, tracking 0, line-height 1.35.
-- **Headline** (Petrona 500, clamp(2rem, 4vw, 3.25rem)): Section statements in the reading room and the mission sentence. Arabic uses Amiri 700.
+- **Display** (Petrona 500, clamp(2.45rem, 4.5vw, 4.5rem), line-height 1.08, tracking -0.03em): The blocked-parcel statement. Arabic uses Noto Naskh Arabic 700, tracking 0, line-height 1.35.
+- **Headline** (Petrona 500, clamp(2rem, 4vw, 3.25rem)): Section statements in the reading room and the mission sentence. Arabic uses Noto Naskh Arabic 700.
 - **Title** (Readex Pro 600, clamp(1.2rem, 1.6vw, 1.45rem)): Timeline entries.
-- **Body** (Petrona 400, 1.2rem, line-height 1.55, max 68ch): The English case. Arabic body is Amiri 400 at 1.35rem, line-height 1.9.
+- **Body** (Petrona 400, 1.2rem, line-height 1.55, max 68ch): The English case. Arabic body is Noto Naskh Arabic 400 at 1.35rem, line-height 1.9.
 - **Label** (Readex Pro 500, 1rem): Navigation, language, and buttons. On a phone the name and the language switch share the first line, and the navigation sits on the second at 0.875rem. The letter action is not in the phone header. Institution names stay in Petrona even in Arabic.
 
 ### Named Rules
 
-**The Script Rule.** When the document is Arabic, prose and headings switch to Amiri and the page direction becomes rtl. Readex Pro stays on chrome in both directions.
+**The Script Rule.** When the document is Arabic, prose and headings switch to Noto Naskh Arabic and the page direction becomes rtl. Readex Pro stays on chrome in both directions.
 
 ## Layout
 
