@@ -21,12 +21,12 @@ export const updates: UpdatePost[] = [
     date: "2026-08-24",
     dateEn: "August 2026",
     dateAr: "آب 2026",
-    titleEn: "State Sponsor of Terrorism designation rescinded",
-    titleAr: "أُلغي تصنيف الدولة الراعية للإرهاب",
+    titleEn: "Syria removed from the state sponsors of terrorism list",
+    titleAr: "شطب سوريا من قائمة الدول الراعية للإرهاب",
     bodyEn:
-      "On this date the State Sponsor of Terrorism designation was rescinded. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions.",
+      "The State Department rescinded Syria’s designation as a state sponsor of terrorism. Sanctions are gone, the Caesar Act is repealed, and now the designation has been lifted. The entry ban is the one measure that has not moved, and we are asking for an exemption for Syrians already admitted to U.S. institutions.",
     bodyAr:
-      "في هذا التاريخ أُلغي تصنيف الدولة الراعية للإرهاب. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية.",
+      "ألغت وزارة الخارجية الأمريكية تصنيف سوريا دولةً راعية للإرهاب. فبعد رفع العقوبات وإلغاء قانون قيصر، زال التصنيف أيضاً، ولم يبقَ على حاله سوى حظر الدخول. ونحن نطالب باستثناء السوريين المقبولين في المؤسسات الأمريكية من هذا الحظر.",
     image: {
       src: "/placeholders/designation.svg",
       altEn: "Placeholder plate for this note.",
@@ -38,12 +38,12 @@ export const updates: UpdatePost[] = [
     date: "2026-01-01",
     dateEn: "January 2026",
     dateAr: "كانون الثاني 2026",
-    titleEn: "Presidential Proclamation 10998 blocks entry",
-    titleAr: "الإعلان الرئاسي 10998 يمنع الدخول",
+    titleEn: "Presidential Proclamation 10998 bars Syrians from entry",
+    titleAr: "الإعلان الرئاسي 10998 يحظر دخول السوريين",
     bodyEn:
-      "On this date Presidential Proclamation 10998 blocks entry. U.S. sanctions were terminated in June 2025, and the Caesar Act was repealed in December 2025. The block on entry remains. The aim is unchanged: study in the United States, then return to rebuild Syria.",
+      "Weeks after the Caesar Act was repealed, a new proclamation suspended entry and visa issuance for Syrian nationals. It made no exception for people already admitted to U.S. universities and hospitals. Students, doctors, and researchers with acceptance letters and scholarships in hand were stopped before they could begin.",
     bodyAr:
-      "في هذا التاريخ يمنع الإعلان الرئاسي 10998 الدخول. أُنهيت العقوبات الأمريكية في حزيران 2025، وأُلغي قانون قيصر في كانون الأول 2025. ما زال المنع قائماً. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
+      "بعد أسابيع من إلغاء قانون قيصر، صدر إعلان رئاسي يعلّق دخول المواطنين السوريين وإصدار التأشيرات لهم، من دون أي استثناء لمن قُبلوا في الجامعات والمستشفيات الأمريكية. فتوقّف طلاب وأطباء وباحثون عند عتبة مسيرتهم، وفي أيديهم خطابات القبول والمنح.",
     image: {
       src: "/placeholders/proclamation.svg",
       altEn: "Placeholder plate for this note.",
@@ -55,12 +55,12 @@ export const updates: UpdatePost[] = [
     date: "2025-12-18",
     dateEn: "December 2025",
     dateAr: "كانون الأول 2025",
-    titleEn: "Caesar Act repealed",
-    titleAr: "أُلغي قانون قيصر",
+    titleEn: "Congress repeals the Caesar Act",
+    titleAr: "الكونغرس يلغي قانون قيصر",
     bodyEn:
-      "On this date the Caesar Act was repealed. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions.",
+      "Congress repealed the Caesar Act, the most far-reaching U.S. sanctions law on Syria. With this vote, both the White House and Congress had acted on the change in Syria.",
     bodyAr:
-      "في هذا التاريخ أُلغي قانون قيصر. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية.",
+      "ألغى الكونغرس قانون قيصر، أوسع قوانين العقوبات الأمريكية على سوريا نطاقاً. وبذلك يكون البيت الأبيض والكونغرس كلاهما قد أقرّا بالتحوّل الذي شهدته سوريا.",
     image: {
       src: "/placeholders/caesar.svg",
       altEn: "Placeholder plate for this note.",
@@ -72,12 +72,12 @@ export const updates: UpdatePost[] = [
     date: "2025-06-30",
     dateEn: "June 2025",
     dateAr: "حزيران 2025",
-    titleEn: "U.S. sanctions terminated",
-    titleAr: "أُنهيت العقوبات الأمريكية",
+    titleEn: "U.S. sanctions on Syria end",
+    titleAr: "رفع العقوبات الأمريكية عن سوريا",
     bodyEn:
-      "On this date U.S. sanctions were terminated. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions.",
+      "Washington ended its sanctions program on Syria, opening the way to trade, investment, and reconstruction. The country we plan to return to began to reconnect with the world.",
     bodyAr:
-      "في هذا التاريخ أُنهيت العقوبات الأمريكية. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية.",
+      "أنهت واشنطن برنامج عقوباتها على سوريا، ففتحت الطريق أمام التجارة والاستثمار وإعادة الإعمار، وبدأ البلد الذي نعتزم العودة إليه يستعيد صلته بالعالم.",
     image: {
       src: "/placeholders/sanctions.svg",
       altEn: "Placeholder plate for this note.",
@@ -89,12 +89,12 @@ export const updates: UpdatePost[] = [
     date: "2024-12-08",
     dateEn: "December 2024",
     dateAr: "كانون الأول 2024",
-    titleEn: "Syria’s liberation",
-    titleAr: "تحرير سوريا",
+    titleEn: "The Syrian revolution prevails",
+    titleAr: "انتصار الثورة السورية",
     bodyEn:
-      "On this date came Syria’s liberation. Presidential Proclamation 10998 still blocks the entry and visa issuance of Syrian nationals, including students, doctors, engineers, and professionals already admitted to U.S. institutions. The aim is unchanged: study in the United States, then return to rebuild Syria.",
+      "After nearly fourteen years, the Syrian revolution prevailed and Syria was liberated. For the first time in a generation, Syrians abroad could plan a future at home, and the skills we planned to gain in the United States now had a country waiting for them.",
     bodyAr:
-      "في هذا التاريخ كان تحرير سوريا. ما زال الإعلان الرئاسي 10998 يمنع دخول المواطنين السوريين وإصدار التأشيرات لهم، ومنهم طلاب وأطباء ومهندسون ومهنيون مقبولون أصلاً في مؤسسات أمريكية. الغاية لم تتغير: الدراسة في الولايات المتحدة، ثم العودة لإعادة إعمار سوريا.",
+      "بعد قرابة أربعة عشر عاماً، انتصرت الثورة السورية وتحررت سوريا. ولأول مرة منذ جيل، صار بوسع السوريين في الخارج أن يخططوا لمستقبلهم في وطنهم، وصار للمعارف التي نسعى إلى اكتسابها في الولايات المتحدة وطنٌ ينتظرها.",
     image: {
       src: "/placeholders/liberation.svg",
       altEn: "Placeholder plate for this note.",
