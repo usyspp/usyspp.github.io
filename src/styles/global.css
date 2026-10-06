@@ -579,9 +579,14 @@ html[dir="rtl"] .timeline p {
   grid-row: 1;
 }
 
-.mission-row .mission {
+.mission-row .mission-copy {
   grid-column: 2;
   grid-row: 1;
+  min-width: 0;
+}
+
+.mission-copy .prose {
+  margin: 1.25rem 0 0;
 }
 
 .plate {
@@ -1424,12 +1429,12 @@ html[dir="rtl"] .form-field textarea {
   .circumstance-copy,
   .circumstance .plate,
   .mission-row .plate,
-  .mission-row .mission {
+  .mission-row .mission-copy {
     grid-column: 1;
   }
 
   .circumstance-copy,
-  .mission-row .mission {
+  .mission-row .mission-copy {
     grid-row: 1;
   }
 
