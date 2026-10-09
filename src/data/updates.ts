@@ -28,7 +28,7 @@ export const updates: UpdatePost[] = [
     bodyAr:
       "ألغت وزارة الخارجية الأمريكية تصنيف سوريا دولةً راعية للإرهاب. فبعد رفع العقوبات وإلغاء قانون قيصر، زال التصنيف أيضاً، ولم يبقَ على حاله سوى حظر الدخول. ونحن نطالب باستثناء السوريين المقبولين في المؤسسات الأمريكية من هذا الحظر.",
     image: {
-      src: "/images/designation.jpg",
+      src: "/images/designation.png",
       altEn: "A photo of Syrian President Ahmed Al-Sharaa and President Trump at the 2026 NATO summit.",
       altAr: "صورة للرئيس السوري أحمد الشرع والرئيس ترامب في قمة حلف الناتو لعام 2026.",
     },
@@ -45,7 +45,7 @@ export const updates: UpdatePost[] = [
     bodyAr:
       "بعد أسابيع من إلغاء قانون قيصر، صدر إعلان رئاسي يعلّق دخول المواطنين السوريين وإصدار التأشيرات لهم، من دون أي استثناء لمن قُبلوا في الجامعات والمستشفيات الأمريكية. فتوقّف طلاب وأطباء وباحثون عند عتبة مسيرتهم، وفي أيديهم خطابات القبول والمنح.",
     image: {
-      src: "/images/proclamation.jpg",
+      src: "/images/proclamation.png",
       altEn: "A photo depicting President Trump signing a presidential proclamation.",
       altAr: "صورة تُظهر الرئيس ترامب وهو يوقّع على إعلان رئاسي.",
     },
@@ -62,7 +62,7 @@ export const updates: UpdatePost[] = [
     bodyAr:
       "ألغى الكونغرس قانون قيصر، أوسع قوانين العقوبات الأمريكية على سوريا نطاقاً. وبذلك يكون البيت الأبيض والكونغرس كلاهما قد أقرّا بالتحوّل الذي شهدته سوريا.",
     image: {
-      src: "/images/caesar.jpg",
+      src: "/images/caesar.png",
       altEn: "A photo of the Texas House of Representatives chamber in Austin.",
       altAr: "صورة لقاعة مجلس نواب تكساس في أوستن.",
     },
@@ -79,7 +79,7 @@ export const updates: UpdatePost[] = [
     bodyAr:
       "أنهت واشنطن برنامج عقوباتها على سوريا، ففتحت الطريق أمام التجارة والاستثمار وإعادة الإعمار، وبدأ البلد الذي نعتزم العودة إليه يستعيد صلته بالعالم.",
     image: {
-      src: "/images/sanctions.jpg",
+      src: "/images/sanctions.png",
       altEn: "A photo of the U.S. capitol in Washington.",
       altAr: "صورة لمبنى الكابيتول الأمريكي في واشنطن.",
     },
@@ -96,7 +96,7 @@ export const updates: UpdatePost[] = [
     bodyAr:
       "بعد قرابة أربعة عشر عاماً، انتصرت الثورة السورية وتحررت سوريا. ولأول مرة منذ جيل، صار بوسع السوريين في الخارج أن يخططوا لمستقبلهم في وطنهم، وصار للمعارف التي نسعى إلى اكتسابها في الولايات المتحدة وطنٌ ينتظرها.",
     image: {
-      src: "/images/liberation.jpg",
+      src: "/images/liberation.png",
       altEn: "Picture depicting crowd celebration after the Syrian liberation.",
       altAr: "صورة تُظهر احتفالاً بعد تحرير سوريا.",
     },
